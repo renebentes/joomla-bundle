@@ -1,31 +1,28 @@
 <snippet>
 	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="$TM_VERSION" client="site" method="upgrade">
-	<name>mod_${1:hello}</name>
-	<author>$TM_FULLNAME</author>
-	<creationDate>$2/$TM_YEAR</creationDate>
-	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
+<extension type="module" version="${1:${TM_VERSION}}" client="site" method="upgrade">
+	<name>mod_${2:hello}</name>
+	<author>${3:${TM_FULLNAME}}</author>
+	<creationDate>$4</creationDate>
+	<copyright>Copyright (C) ${5:${TM_YEAR}} ${6:${TM_ORGANIZATION_NAME}}. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<authorEmail>$TM_EMAIL</authorEmail>
-	<authorUrl>$TM_WEBSITE</authorUrl>
-	<version>$TM_MANIFEST_VERSION</version>
-	<description>MOD_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
+	<authorEmail>${7:${TM_EMAIL}}</authorEmail>
+	<authorUrl>${8:${TM_WEBSITE}}</authorUrl>
+	<version>${9:${TM_MANIFEST_VERSION}}</version>
+	<description>MOD_${2/(.+)/\U\1/g}_XML_DESCRIPTION</description>
 	<files>
-		<filename module="mod_${1/(.+)/\L\1/g}">mod_${1/(.+)/\L\1/g}.php</filename>
+		<filename module="mod_${2/(.+)/\L\1/g}">mod_${2/(.+)/\L\1/g}.php</filename>
 		<folder>tmpl</folder>
-		<filename>mod_${1/(.+)/\L\1/g}.xml</filename>
+		<filename>mod_${2/(.+)/\L\1/g}.xml</filename>
 		<filename>helper.php</filename>
 		<filename>index.html</filename>
 	</files>
 	<languages folder="language">
-		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.mod_${1/(.+)/\L\1/g}.ini</language>
-		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.mod_${1/(.+)/\L\1/g}.sys.ini</language>
+		<language tag="${10:${TM_LANGUAGE}}">$10/$10.mod_${2/(.+)/\L\1/g}.ini</language>
+		<language tag="$10">$10/$10.mod_${2/(.+)/\L\1/g}.sys.ini</language>
 	</languages>
 	<config>
 		<fields name="params">
-			<fieldset name="basic">
-
-			</fieldset>
 			<fieldset name="advanced">
 				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
 				<field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />

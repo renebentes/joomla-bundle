@@ -1,10 +1,10 @@
 <snippet>
 	<content><![CDATA[/**
- * Method to toggle the featured setting of a list of ${2/(.+)/\L\1/g}.
+ * Method to toggle the featured setting of a list of ${1:hellos}.
  *
  * @return  void
  *
- * @since   $TM_VERSION
+ * @since   ${2:${TM_VERSION}}
  */
 public function featured()
 {
@@ -28,7 +28,7 @@ public function featured()
 
 		if (isset(\$item->catid))
 		{
-			if (!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}.category.' . (int) \$item->catid))
+			if (!\$user->authorise('core.edit.state', 'com_${3:${TM_PROJECT/(.+)/\L\1/g}}.category.' . (int) \$item->catid))
 			{
 				// Prune items that you can't change.
 				unset(\$ids[\$i]);
@@ -40,7 +40,7 @@ public function featured()
 
 	if (empty(\$ids))
 	{
-		JError::raiseWarning(500, JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_NO_ITEM_SELECTED'));
+		JError::raiseWarning(500, JText::_('COM_${3/(.+)/\U\1/g}_NO_ITEM_SELECTED'));
 	}
 	else
 	{
@@ -51,7 +51,7 @@ public function featured()
 		}
 	}
 
-	\$this->setRedirect('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${2:hellos}');
+	\$this->setRedirect('index.php?option=com_${3/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}');
 }]]></content>
 	<tabTrigger>jadmincontrollerlistfeatured</tabTrigger>
 </snippet>

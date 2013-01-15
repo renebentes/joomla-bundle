@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[; ${1:Hello}
-; Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.
+; Copyright (C) ${2:${TM_YEAR}} ${3:${TM_ORGANIZATION_NAME}}. All rights reserved.
 ; License GNU General Public License version 2 or later; see LICENSE.txt, see LICENSE.php
 ; Note : All ini files need to be saved as UTF-8 - No BOM
 

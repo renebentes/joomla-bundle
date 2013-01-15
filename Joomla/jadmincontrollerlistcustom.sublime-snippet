@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[/**
- * Method to toggle the ${1/(.+)/\L\1/g} setting of a list of ${2/(.+)/\L\1/g}.
+ * Method to toggle the ${2/(.+)/\L\1/g} setting of a list of ${6/(.+)/\L\1/g}.
  *
  * @return  void
  *
- * @since   $TM_VERSION
+ * @since   ${1:${TM_VERSION}}
  */
-public function ${1:hello}()
+public function ${2:hello}()
 {
 	// Check for request forgeries
 	JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
@@ -28,7 +28,7 @@ public function ${1:hello}()
 
 		if (isset(\$item->catid))
 		{
-			if (!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}.category.' . (int) \$item->catid))
+			if (!\$user->authorise('core.edit.state', 'com_${5:${TM_PROJECT/(.+)/\L\1/g}}.category.' . (int) \$item->catid))
 			{
 				// Prune items that you can't change.
 				unset(\$ids[\$i]);
@@ -40,18 +40,18 @@ public function ${1:hello}()
 
 	if (empty(\$ids))
 	{
-		JError::raiseWarning(500, JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_NO_ITEM_SELECTED'));
+		JError::raiseWarning(500, JText::_('COM_${5/(.+)/\U\1/g}_NO_ITEM_SELECTED'));
 	}
 	else
 	{
 		// Publish the items.
-		if (!\$model->${1/(.+)/\L\1/g}(\$ids, \$value))
+		if (!\$model->${2/(.+)/\L\1/g}(\$ids, \$value))
 		{
 			JError::raiseWarning(500, \$model->getError());
 		}
 	}
 
-	\$this->setRedirect('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${2:hellos}');
+	\$this->setRedirect('index.php?option=com_${5/(.+)/\L\1/g}&view=${6:hellos}');
 }]]></content>
 	<tabTrigger>jadmincontrollerlistcustom</tabTrigger>
 </snippet>
