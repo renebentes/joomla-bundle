@@ -4,17 +4,17 @@
 /**
  * ${1/(.+)/\u\1/g} controller class.
  *
- * @package     $TM_PROJECT
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @package     ${2:${TM_PROJECT}}
+ * @subpackage  com_${2/(.+)/\L\1/g}
+ * @since       ${3:${TM_VERSION}}
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
+class ${2/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 {
 	/**
 	 * @var    string  The prefix to use with controller messages.
-	 * @since  $TM_VERSION
+	 * @since  $3
 	 */
-	protected \$text_prefix = 'COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';
+	protected \$text_prefix = 'COM_${2/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';
 }
 
 ]]></content>
