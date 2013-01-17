@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${1:Summary}.
+ *
+ * @return  ${2:type}  ${3:Description of the return}.
+ *
+ * @since   2.5
+ */
+public static function ${4:nameMethod}()
+{
+	$5
+}]]></content>
+	<tabTrigger>jmethod</tabTrigger>
+</snippet>

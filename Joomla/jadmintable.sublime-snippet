@@ -2,24 +2,24 @@
 	<content><![CDATA[jimport('joomla.database.table');
 
 /**
- * ${1/(.+)/\u\1/g} table class.
+ * ${1:Hello} table class.
  *
- * @package     $TM_PROJECT
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @package     ${2:${TM_PROJECT}}
+ * @subpackage  com_${2/(.+)/\L\1/g}
+ * @since       ${3:${TM_VERSION}}
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Hello} extends JTable
+class ${2/(.+)/\u\1/g}Table${1/(.+)/\u\1/g} extends JTable
 {
 	/**
 	 * Constructor
 	 *
 	 * @param   object  &\$db  JDatabase connector object.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	public function __construct(&\$db)
 	{
-		parent::__construct('#__${TM_PROJECT/(.+)/\L\1/g}_${2:hellos}', 'id', \$db);
+		parent::__construct('#__${2/(.+)/\L\1/g}_${4:hellos}', 'id', \$db);
 	}
 
 	/**
@@ -33,7 +33,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Hello} extends JTable
 	 *
 	 * @return  mixed  Null if operation was satisfactory, otherwise returns an error string
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	public function bind(\$array, \$ignore = '')
 	{
@@ -62,21 +62,21 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Hello} extends JTable
 	 *
 	 * @return  boolean  True if the instance is sane and able to be stored in the database.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	public function check()
 	{
-		// Check for valid ${3/(.+)/\L\1/g}.
-		if (trim(\$this->${3/(.+)/\L\1/g}) == '')
+		// Check for valid ${5:title}.
+		if (trim(\$this->${5/(.+)/\L\1/g}) == '')
 		{
-			\$this->setError(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_WARNING_PROVIDE_VALID_NAME'));
+			\$this->setError(JText::_('COM_${2/(.+)/\U\1/g}_WARNING_PROVIDE_VALID_NAME'));
 
 			return false;
 		}
 
 		if (trim(\$this->alias) == '')
 		{
-			\$this->alias = \$this->${3:title};
+			\$this->alias = \$this->${5/(.+)/\L\1/g};
 		}
 
 		\$this->alias = JApplication::stringURLSafe(\$this->alias);
@@ -84,6 +84,15 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Hello} extends JTable
 		if (trim(str_replace('-', '', \$this->alias)) == '')
 		{
 			\$this->alias = JFactory::getDate()->format('Y-m-d-H-i-s');
+		}
+
+		// Set ordering
+		if ($this->published < 0) {
+			// Set ordering to 0 if state is archived or trashed
+			$this->ordering = 0;
+		} elseif (empty($this->ordering)) {
+			// Set ordering to last if ordering was 0
+			$this->ordering = self::getNextOrder('published >= 0');
 		}
 
 		// Check the publish down date is not earlier than publish up.
@@ -108,7 +117,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Hello} extends JTable
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	public function store(\$updateNulls = false)
 	{
@@ -120,6 +129,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Hello} extends JTable
 			// Existing item
 			\$this->modified = \$date->toMySQL();
 			\$this->modified_by = \$user->get('id');
+			\$this->version += 1;
 		}
 		else
 		{
@@ -133,10 +143,14 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Hello} extends JTable
 			{
 				\$this->created_by = \$user->get('id');
 			}
+			if (empty(\$this->created_by_alias))
+			{
+				\$this->created_by_alias = \$user->get('alias');
+			}
 		}
 
 		// Verify that the alias is unique
-		\$table = JTable::getInstance('${1/(.+)/\u\1/g}', '${TM_PROJECT/(.+)/\u\1/g}Table');
+		\$table = JTable::getInstance('${1/(.+)/\u\1/g}', '${2/(.+)/\u\1/g}Table');
 		if (\$table->load(array('alias' => \$this->alias)) && (\$table->id != \$this->id || \$this->id == 0))
 		{
 			\$this->setError(JText::_('JLIB_DATABASE_ERROR_ARTICLE_UNIQUE_ALIAS'));

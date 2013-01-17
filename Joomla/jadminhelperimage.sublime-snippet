@@ -1,0 +1,83 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method for resizing images to display in list.
+ *
+ * @param   string   $image   The path to full image
+ * @param   string   $size    The new size. Example: array('50x50','120x250');
+ * @param   string   $folder  The thumbs destination folder
+ * @param   integer  $method  The thumbnail creation method.
+ * @return  string   Path of the new image file.
+ *
+ * @since   2.5
+ */
+public static function getImage($image, $size, $folder, $method = 2)
+{
+	jimport('joomla.filesystem.folder');
+	jimport('joomla.filesystem.file');
+	jimport('joomla.image.image');
+
+	if(!empty($size) && JFile::exists($image))
+	{
+		// Check or try to create folder
+		if (JFolder::exists($folder) || JFolder::create($folder))
+		{
+			// Get thumb size
+			$size = explode('x', strtolower($size));
+			if (count($size) != 2)
+			{
+				return false;
+			}
+
+			$width = $size[0];
+			$height = $size[1];
+
+			// Source object
+			$sourceImage = new JImage($image);
+			$srcHeight = $sourceImage->getHeight();
+			$srcWidth = $sourceImage->getWidth();
+			$properties = JImage::getImageFileProperties($image);
+
+			// Generate thumb name
+			$filename = JFile::getName($image);
+			$extension = JFile::getExt($filename);
+			$thumbname = str_replace('.' . $extension, '_' . $width . 'x' . $height . '.' . $extension, $filename);
+
+			// Try to generate the thumb
+			if ($method == 4)
+			{
+				// Auto crop centered coordinates
+				$left = round(($srcWidth - $width) / 2);
+				$top = round(($srcHeight - $height) / 2);
+
+				// Crop image
+				$thumb = $sourceImage->crop($width, $height, $left, $top, true);
+			}
+			else
+			{
+				// Resize image
+				$thumb = $sourceImage->resize($width, $height, true, $method);
+			}
+			if ($properties->type == 3)
+			{
+				$quality = 9;
+			}
+			elseif ($properties->type == 2)
+			{
+				$quality = 60;
+			}
+
+			$thumbname = $folder . '/' . $thumbname;
+
+			if (!JFile::exists($thumbname))
+			{
+				$thumb->toFile($thumbname, $properties->type, array('quality' => $quality));
+			}
+			return $thumbname;
+		}
+	}
+
+	return false;
+}
+]]></content>
+	<tabTrigger>jadminhelperimage</tabTrigger>
+</snippet>

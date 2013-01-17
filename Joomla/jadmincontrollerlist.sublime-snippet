@@ -2,13 +2,13 @@
 	<content><![CDATA[jimport('joomla.application.component.controlleradmin');
 
 /**
- * ${1/(.+)/\u\1/g} list controller class.
+ * ${1:Hellos} list controller class.
  *
  * @package     ${2:${TM_PROJECT/(.+)/\u\1/g}}
  * @subpackage  com_${2/(.+)/\L\1/g}
  * @since       ${3:${TM_VERSION}}
  */
-class ${2/(.+)/\u\1/g}Controller${1:Hellos} extends JControllerAdmin
+class ${2/(.+)/\u\1/g}Controller${1/(.+)/\u\1/g} extends JControllerAdmin
 {
 	/**
 	 * @var		string	The prefix to use with controller messages.
