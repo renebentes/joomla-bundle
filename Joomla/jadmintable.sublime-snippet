@@ -127,7 +127,7 @@ class ${2/(.+)/\u\1/g}Table${1/(.+)/\u\1/g} extends JTable
 		if (\$this->id)
 		{
 			// Existing item
-			\$this->modified = \$date->toMySQL();
+			\$this->modified = \$date->toSql();
 			\$this->modified_by = \$user->get('id');
 			\$this->version += 1;
 		}
@@ -137,7 +137,7 @@ class ${2/(.+)/\u\1/g}Table${1/(.+)/\u\1/g} extends JTable
 			// so we don't touch it if it is set.
 			if (!intval(\$this->created))
 			{
-				\$this->created = \$date->toMySQL();
+				\$this->created = \$date->toSql();
 			}
 			if (empty(\$this->created_by))
 			{

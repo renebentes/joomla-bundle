@@ -2,22 +2,22 @@
 	<content><![CDATA[jimport('joomla.application.categories');
 
 /**
- * Build the route for the com_${TM_PROJECT/(.+)/\L\1/g} component
+ * Build the route for the com_${1:${TM_PROJECT/(.+)/\L\1/g}} component
  *
  * @param   array  &\$query  An array of URL arguments
  *
  * @return  array  The URL arguments to use to assemble the subsequent URL.
  *
- * @since   2.5
+ * @since   ${2:${TM_VERSION}}
  */
-function ${TM_PROJECT/(.+)/\L\1/g}BuildRoute(&\$query)
+function ${1/(.+)/\L\1/g}BuildRoute(&\$query)
 {
 	\$segments = array();
 
 	// Get a menu item based on Itemid or currently active
 	\$app    = JFactory::getApplication();
 	\$menu   = \$app->getMenu();
-	\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
+	\$params = JComponentHelper::getParams('com_${1/(.+)/\L\1/g}');
 	\$advanced = \$params->get('sef_advanced_link', 0);
 
 	if (empty(\$query['Itemid']))
@@ -45,7 +45,7 @@ function ${TM_PROJECT/(.+)/\L\1/g}BuildRoute(&\$query)
 		unset(\$query['view']);
 	}
 
-	// Are we dealing with an ${1/(.+)/\L\1/g} that is attached to a menu item?
+	// Are we dealing with an ${3:hello} that is attached to a menu item?
 	if (isset(\$query['view']) && (\$mView == \$query['view']) and (isset(\$query['id'])) and (\$mId == intval(\$query['id'])))
 	{
 		unset(\$query['view']);
@@ -55,11 +55,11 @@ function ${TM_PROJECT/(.+)/\L\1/g}BuildRoute(&\$query)
 		return \$segments;
 	}
 
-	if (isset(\$view) and (\$view == 'category' or \$view == '${1:hello}'))
+	if (isset(\$view) and (\$view == 'category' or \$view == '${3/(.+)/\L\1/g}'))
 	{
 		if (\$mId != intval(\$query['id']) || \$mView != \$view)
 		{
-			if (\$view == '${1/(.+)/\L\1/g}' && isset(\$query['catid']))
+			if (\$view == '${3/(.+)/\L\1/g}' && isset(\$query['catid']))
 			{
 				\$catid = \$query['catid'];
 			}
@@ -69,7 +69,7 @@ function ${TM_PROJECT/(.+)/\L\1/g}BuildRoute(&\$query)
 			}
 
 			\$menuCatid = \$mId;
-			\$categories = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}');
+			\$categories = JCategories::getInstance('${1/(.+)/\u\1/g}');
 			\$category = \$categories->get(\$catid);
 
 			if (\$category)
@@ -97,7 +97,7 @@ function ${TM_PROJECT/(.+)/\L\1/g}BuildRoute(&\$query)
 				\$segments = array_merge(\$segments, array_reverse(\$array));
 			}
 
-			if (\$view == '${1/(.+)/\L\1/g}')
+			if (\$view == '${3/(.+)/\L\1/g}')
 			{
 				if (\$advanced)
 				{
@@ -143,7 +143,7 @@ function ${TM_PROJECT/(.+)/\L\1/g}BuildRoute(&\$query)
  *
  * @return  array  The URL attributes to be used by the application.
  */
-function ${TM_PROJECT/(.+)/\L\1/g}ParseRoute(\$segments)
+function ${1/(.+)/\L\1/g}ParseRoute(\$segments)
 {
 	\$vars = array();
 
@@ -151,13 +151,13 @@ function ${TM_PROJECT/(.+)/\L\1/g}ParseRoute(\$segments)
 	\$app    = JFactory::getApplication();
 	\$menu   = \$app->getMenu();
 	\$item   = \$menu->getActive();
-	\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
+	\$params = JComponentHelper::getParams('com_${1/(.+)/\L\1/g}');
 	\$advanced = \$params->get('sef_advanced_link', 0);
 
 	// Count route segments
 	\$count = count(\$segments);
 
-	// Standard routing for ${TM_PROJECT/(.+)/\L\1/g}.
+	// Standard routing for ${1/(.+)/\L\1/g}.
 	if (!isset(\$item))
 	{
 		\$vars['view'] = \$segments[0];
@@ -168,7 +168,7 @@ function ${TM_PROJECT/(.+)/\L\1/g}ParseRoute(\$segments)
 
 	// From the categories view, we can only jump to a category.
 	\$id = (isset(\$item->query['id']) && \$item->query['id'] > 1) ? \$item->query['id'] : 'root';
-	\$categories = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}')->get(\$id)->getChildren();
+	\$categories = JCategories::getInstance('${1/(.+)/\u\1/g}')->get(\$id)->getChildren();
 	\$vars['catid'] = \$id;
 	\$vars['id'] = \$id;
 	\$found = 0;
@@ -195,7 +195,7 @@ function ${TM_PROJECT/(.+)/\L\1/g}ParseRoute(\$segments)
 			if (\$advanced)
 			{
 				\$db = JFactory::getDBO();
-				\$query = 'SELECT id FROM #__${TM_PROJECT/(.+)/\L\1/g} WHERE catid = ' . \$vars['catid'] . ' AND alias = ' . \$db->Quote(\$segment);
+				\$query = 'SELECT id FROM #__${1/(.+)/\L\1/g} WHERE catid = ' . \$vars['catid'] . ' AND alias = ' . \$db->Quote(\$segment);
 				\$db->setQuery(\$query);
 				\$nid = \$db->loadResult();
 			}
@@ -205,7 +205,7 @@ function ${TM_PROJECT/(.+)/\L\1/g}ParseRoute(\$segments)
 			}
 
 			\$vars['id'] = \$nid;
-			\$vars['view'] = '${1/(.+)/\L\1/g}';
+			\$vars['view'] = '${3/(.+)/\L\1/g}';
 		}
 
 		\$found = 0;

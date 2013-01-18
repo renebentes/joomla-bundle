@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[/**
- * ${TM_PROJECT/(.+)/\u\1/g} Component Controller
+ * ${1:${TM_PROJECT/(.+)/\u\1/g}} Component Controller
  *
- * @package     $TM_PROJECT
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @package     ${1/(.+)/\u\1/g}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ * @since       ${2:${TM_VERSION}}
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Controller extends JControllerLegacy
+class ${1/(.+)/\u\1/g}Controller extends JControllerLegacy
 {
 	/**
 	 * Method to display a view.
@@ -14,9 +14,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller extends JControllerLegacy
 	 * @param   boolean  \$cachable   If true, the view output will be cached
 	 * @param   array    \$urlparams  An array of safe url parameters and their variable types, for valid values see {@link JFilterInput::clean()}.
 	 *
-	 * @return  JController  This object to support chaining.
+	 * @return  JControllerLegacy  This object to support chaining.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $2
 	 */
 	public function display(\$cachable = false, \$urlparams = false)
 	{
@@ -25,14 +25,14 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller extends JControllerLegacy
 		\$user     = JFactory::getUser();
 
 		// Set the default view name and format from the Request.
-		// Note we are using ${TM_PROJECT/(.)(.+)/\L\1/g}_id to avoid collisions with the router and the return page.
+		// Note we are using ${1/(.)(.+)/\L\1/g}_id to avoid collisions with the router and the return page.
 		// Frontend is a bit messier than the backend.
-		\$id    = JRequest::getInt('${TM_PROJECT/(.)(.+)/\L\1/g}_id');
-		\$vName = JRequest::getCmd('view', '${1:categories}');
+		\$id    = JRequest::getInt('${1/(.)(.+)/\L\1/g}_id');
+		\$vName = JRequest::getCmd('view', '${3:name}');
 
 		JRequest::setVar('view', \$vName);
 
-		if (\$user->get('id') ||(\$_SERVER['REQUEST_METHOD'] == 'POST' && \$vName = '${1/(.+)/\L\1/g}'))
+		if (\$user->get('id') ||(\$_SERVER['REQUEST_METHOD'] == 'POST' && \$vName = '${3/(.+)/\L\1/g}'))
 		{
 			\$cachable = false;
 		}
@@ -47,7 +47,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller extends JControllerLegacy
 		);
 
 		// Check for edit form.
-		if (\$vName == '${4:form}' && !\$this->checkEditId('com_${TM_PROJECT/(.+)/\L\1/g}.edit.${3:hello}', \$id))
+		if (\$vName == '${4:form}' && !\$this->checkEditId('com_${1/(.+)/\L\1/g}.edit.${5:hello}', \$id))
 		{
 			// Somehow the person just went to the form - we don't allow that.
 			return JError::raiseError(403, JText::sprintf('JLIB_APPLICATION_ERROR_UNHELD_ID', \$id));
