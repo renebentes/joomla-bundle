@@ -10,7 +10,7 @@
  *
  * @since   ${2:${TM_VERSION}}
  */
-function ${1/(.+)/\L\1/g}BuildRoute(&\$query)
+function ${1/(.+)/\u\1/g}BuildRoute(&\$query)
 {
 	\$segments = array();
 
@@ -143,7 +143,7 @@ function ${1/(.+)/\L\1/g}BuildRoute(&\$query)
  *
  * @return  array  The URL attributes to be used by the application.
  */
-function ${1/(.+)/\L\1/g}ParseRoute(\$segments)
+function ${1/(.+)/\u\1/g}ParseRoute(\$segments)
 {
 	\$vars = array();
 

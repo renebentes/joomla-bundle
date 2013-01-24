@@ -2,13 +2,13 @@
 	<content><![CDATA[jimport('joomla.application.component.modellist');
 
 /**
- * ${TM_PROJECT/(.+)/\u\1/g} Component ${1/(.+)/\u\1/g} Model
+ * ${1:${TM_PROJECT/(.+)/\u\1/g}} Component ${2:Hellos} Model
  *
- * @package     Events
- * @subpackage  com_events
- * @since       2.5
+ * @package     ${1/(.+)/\u\1/g}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ * @since       ${3:${TM_VERSION}}
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
+class ${1/(.+)/\u\1/g}Model${2/(.+)/\u\1/g} extends JModelList
 {
 	/**
 	 * Constructor.
@@ -16,7 +16,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 	 * @param   array  \$config  An optional associative array of configuration settings.
 	 *
 	 * @see     JController
-	 * @since   2.5
+	 * @since   $3
 	 */
 	public function __construct(\$config = array())
 	{
@@ -24,7 +24,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 		{
 			\$config['filter_fields'] = array(
 				'id', 'a.id',
-				'name', 'a.name',
+				'${4:name}', 'a.${4/(.+)(s\b)/\L\1/g}',
 				'published', 'a.published',
 				'ordering', 'a.ordering',
 			);
@@ -38,7 +38,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 	 *
 	 * @return  mixed  An array of objects on success, false on failure.
 	 *
-	 * @since   2.5
+	 * @since   $3
 	 */
 	public function getItems()
 	{
@@ -53,7 +53,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 	 *
 	 * @return  string  An SQL query
 	 *
-	 * @since   2.5
+	 * @since   $3
 	 */
 	protected function getListQuery()
 	{
@@ -65,7 +65,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 
 		// Select required fields from the table.
 		\$query->select(\$this->getState('list.select', 'a.*'));
-		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}') . ' AS a');
+		\$query->from(\$db->quoteName('#__${1/(.+)/\L\1/g}_${2/(.+)/\L\1/g}') . ' AS a');
 
 		// Filter by published state
 		\$published = \$this->getState('filter.published');
@@ -91,13 +91,13 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 	 *
 	 * @return  void
 	 *
-	 * @since   2.5
+	 * @since   $3
 	 */
 	protected function populateState(\$ordering = null, \$direction = null)
 	{
 		// Initialise variables.
 		\$app    = JFactory::getApplication();
-		\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
+		\$params = JComponentHelper::getParams('com_${1/(.+)/\L\1/g}');
 
 		// List state information
 		\$limit = \$app->getUserStateFromRequest('global.list.limit', 'limit', \$app->getCfg('list_limit'), 'uint');
@@ -127,7 +127,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 		// Get the user object.
 		\$user = JFactory::getUser();
 
-		if ((!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}')) && (!\$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}')))
+		if ((!\$user->authorise('core.edit.state', 'com_${1/(.+)/\L\1/g}')) && (!\$user->authorise('core.edit', 'com_${1/(.+)/\L\1/g}')))
 		{
 			// Limit to published for people who can't edit or edit.state.
 			\$this->setState('filter.published', 1);
@@ -139,5 +139,5 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 }
 
 ]]></content>
-	<tabTrigger>jsitemodellist-category</tabTrigger>
+	<tabTrigger>jsitemodellistsimple</tabTrigger>
 </snippet>

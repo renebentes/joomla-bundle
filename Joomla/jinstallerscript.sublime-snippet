@@ -1,0 +1,61 @@
+<snippet>
+	<content><![CDATA[/**
+ * Script file of ${1:${TM_PROJECT/(.+)/\u\1/g}} component
+ */
+class Com_${1/(.+)/\u\1/g}InstallerScript
+{
+    /**
+     * Method to install the component
+     *
+     * @param JInstaller \$parent
+     */
+    function install(\$parent)
+    {
+        $2
+    }
+
+    /**
+     * Method to uninstall the component
+     *
+     * @param JInstaller \$parent
+     */
+    function uninstall(\$parent)
+    {
+        $3
+    }
+
+    /**
+     * Method to update the component
+     *
+     * @param JInstaller \$parent
+     */
+    function update(\$parent)
+    {
+        $4
+    }
+
+    /**
+     * Method to run before an install/update/uninstall method
+     *
+	 * @param string 		\$type Installation type (install, update, discover_install)
+	 * @param JInstaller 	\$parent Parent object
+     */
+    function preflight(\$type, \$parent)
+    {
+        $5
+    }
+
+    /**
+     * Method to run after an install/update/uninstall method
+     *
+     * @param string 		\$type install, update or discover_update
+	 * @param JInstaller 	\$parent
+     */
+    function postflight(\$type, \$parent)
+    {
+        $6
+    }
+}
+]]></content>
+	<tabTrigger>jinstallerscript</tabTrigger>
+</snippet>

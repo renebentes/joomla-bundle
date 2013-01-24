@@ -1,15 +1,16 @@
 <snippet>
 	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="${1:${TM_VERSION}}" method="upgrade">
-	<name>com_${2:${TM_PROJECT}/(.+)/\L\1/g}}</name>
+<extension type="component" version="${1:${TM_MANIFEST_VERSION}}" method="upgrade">
+	<name>COM_${2:${TM_PROJECT/(.+)/\U\1/g}}</name>
 	<author>${3:${TM_FULLNAME}}</author>
 	<creationDate>$4</creationDate>
-	<copyright>(C) ${5:${TM_YEAR}} ${6:${TM_ORGANIZATION_NAME}}. All rights reserved.</copyright>
+	<copyright>(C) ${5:$TM_YEAR} ${6:$TM_ORGANIZATION_NAME}. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>${7:${TM_EMAIL}}</authorEmail>
 	<authorUrl>${8:${TM_WEBSITE}}</authorUrl>
-	<version>${9:${TM_MANIFEST_VERSION}}</version>
+	<version>${9:${TM_VERSION}}</version>
 	<description>COM_${2/(.+)/\U\1/g}_XML_DESCRIPTION</description>
+	<scriptfile>script.php</scriptfile>
 	<install>
 		<sql>
 			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
@@ -20,6 +21,11 @@
 			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
 		</sql>
 	</uninstall>
+	<update>
+		<schemas>
+            <schemapath type="mysql">sql/updates</schemapath>
+        </schemas>
+	</update>
 	<files folder="site">
 		<folder>controllers</folder>
 		<folder>helpers</folder>
@@ -32,8 +38,14 @@
 		<filename>router.php</filename>
 	</files>
 	<languages folder="site">
-		<language tag="${10:${TM_LANGUAGE}}">language/$10/$10.com_${2/(.+)/\L\1/g}.ini</language>
+		<language tag="${10:$TM_LANGUAGE}">language/$10/$10.com_${2/(.+)/\L\1/g}.ini</language>
 	</languages>
+	<media folder="media" destination="com_${2/(.+)/\L\1/g}">
+		<folder>css</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<filename>index.html</filename>
+	</media>
 	<administration>
 		<menu img="../media/com_${2/(.+)/\L\1/g}/images/menu/${11:hello}.png">com_${2/(.+)/\L\1/g}</menu>
 		<submenu>
@@ -55,12 +67,12 @@
 			<filename>${2/(.+)/\L\1/g}.php</filename>
 		</files>
 		<languages folder="admin">
-			<language tag="${10:${TM_LANGUAGE}}">language/$10/$10.com_${2/(.+)/\L\1/g}.ini</language>
-			<language tag="${10:${TM_LANGUAGE}}">language/$10/$10.com_${2/(.+)/\L\1/g}.sys.ini</language>
+			<language tag="$10">language/$10/$10.com_${2/(.+)/\L\1/g}.ini</language>
+			<language tag="$10">language/$10/$10.com_${2/(.+)/\L\1/g}.sys.ini</language>
 		</languages>
 	</administration>
 </extension>
-
-]]></content>
+]]>
+	</content>
 	<tabTrigger>jcomponentmanifest</tabTrigger>
 </snippet>

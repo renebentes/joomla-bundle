@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[/**
- * HTML View class for a list of ${1/(.+)/\L\1/g}.
+ * HTML View class for a list of ${1:hellos}.
  *
- * @package     $TM_PROJECT
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @package     ${2:${TM_PROJECT}}
+ * @subpackage  com_${2/(.+)/\L\1/g}
+ * @since       ${3:${TM_VERSION}}
  */
-class ${TM_PROJECT/(.+)/\u\1/g}View${1:Hellos} extends JViewLegacy
+class ${2/(.+)/\u\1/g}View${1/(.+)/\u\1/g} extends JViewLegacy
 {
 	protected \$state;
 
@@ -25,7 +25,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Hellos} extends JViewLegacy
 	 *
 	 * @return  mixed  False on error, null otherwise.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	public function display(\$tpl = null)
 	{
@@ -60,7 +60,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Hellos} extends JViewLegacy
 			// Add router helpers.
 			\$item->slug = \$item->alias ? (\$item->id . ':' . \$item->alias) : \$item->id;
 			\$item->catslug = \$item->category_alias ? (\$item->catid . ':' . \$item->category_alias) : \$item->catid;
-			\$item->link = JRoute::_(${TM_PROJECT/(.+)/\u\1/g}HelperRoute::get${TM_PROJECT/(.+)(s\b)/\u\1/g}Route(\$item->slug, \$item->catslug));
+			\$item->link = JRoute::_(${2/(.+)/\u\1/g}HelperRoute::get${2/(.+)(s\b)/\u\1/g}Route(\$item->slug, \$item->catslug));
 
 			\$temp = new JRegistry;
 			\$temp->loadString(\$item->params);
@@ -90,7 +90,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Hellos} extends JViewLegacy
 	 *
 	 * @return  void
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	protected function _prepareDocument()
 	{
@@ -109,7 +109,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Hellos} extends JViewLegacy
 		}
 		else
 		{
-			\$this->params->def('page_heading', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_DEFAULT_PAGE_TITLE'));
+			\$this->params->def('page_heading', JText::_('COM_${2/(.+)/\U\1/g}_DEFAULT_PAGE_TITLE'));
 		}
 
 		\$id = (int) @\$menu->query['id'];
