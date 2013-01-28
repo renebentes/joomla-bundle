@@ -2,7 +2,7 @@
 	<content><![CDATA[jimport('joomla.application.component.view');
 
 /**
- * HTML View class for a list of ${1:hello}.
+ * HTML View class for a list of ${1:hellos}.
  *
  * @package     ${2:${TM_PROJECT}}
  * @subpackage  com_${2/(.+)/\L\1/g}

@@ -5,7 +5,7 @@
 	<author>${3:${TM_FULLNAME}}</author>
 	<creationDate>$4</creationDate>
 	<copyright>(C) ${5:$TM_YEAR} ${6:$TM_ORGANIZATION_NAME}. All rights reserved.</copyright>
-	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<license>GNU General Public License version 2 or later; see http://www.gnu.org/licenses/gpl-2.0.html</license>
 	<authorEmail>${7:${TM_EMAIL}}</authorEmail>
 	<authorUrl>${8:${TM_WEBSITE}}</authorUrl>
 	<version>${9:${TM_VERSION}}</version>

@@ -1,14 +1,12 @@
 <snippet>
-	<content><![CDATA[
-<!DOCTYPE HTML>
+	<content><![CDATA[<!DOCTYPE HTML>
 <html lang="pt-br" dir="ltr">
 <head>
 	<meta charset="utf-8">
-	<title>$0</title>
+	<title>$1</title>
 </head>
 <body>
-	<h1>$0</h1>
-
+	<h1>$1</h1>
 </body>
 </html>
 ]]></content>
