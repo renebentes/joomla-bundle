@@ -1,13 +1,13 @@
 <snippet>
 	<content><![CDATA[/**
- * HTML ${1/(.+)/\u\1/g} View class for the ${TM_PROJECT/(.+)/\L\1/g} component
+ * HTML ${1:Hello} View class for the ${2:${TM_PROJECT/(.+)/\u\1/g}} component
  *
  * @static
- * @package     $TM_PROJECT
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @package     ${2/(.+)/\u\1/g}
+ * @subpackage  com_${2/(.+)/\L\1/g}
+ * @since       ${3:${TM_VERSION}}
  */
-class ${TM_PROJECT/(.+)/\u\1/g}View${1:Hello} extends JViewLegacy
+class ${2/(.+)/\u\1/g}View${1/(.+)/\u\1/g} extends JViewLegacy
 {
 	protected \$state;
 
@@ -22,7 +22,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Hello} extends JViewLegacy
 	 *
 	 * @return  mixed  JError object on failure, void on success.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	public function display(\$tpl = null)
 	{
@@ -41,7 +41,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Hello} extends JViewLegacy
 		if (\$item)
 		{
 			// Get Category Model data
-			\$categoryModel = JModelLegacy::getInstance('Category', '${TM_PROJECT/(.+)/\u\1/g}Model', array('ignore_request' => true));
+			\$categoryModel = JModelLegacy::getInstance('Category', '${2/(.+)/\u\1/g}Model', array('ignore_request' => true));
 			\$categoryModel->setState('category.id', \$item->catid);
 			\$categoryModel->setState('list.ordering', 'a.name');
 			\$categoryModel->setState('list.direction', 'asc');
@@ -68,7 +68,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Hello} extends JViewLegacy
 
 		if (!is_writable(\$cacheDir))
 		{
-			JError::raiseNotice('0', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_CACHE_DIRECTORY_UNWRITABLE'));
+			JError::raiseNotice('0', JText::_('COM_${2/(.+)/\U\1/g}_CACHE_DIRECTORY_UNWRITABLE'));
 
 			return;
 		}
@@ -170,7 +170,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Hello} extends JViewLegacy
 	 *
 	 * @return  void
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	protected function _prepareDocument()
 	{
@@ -188,7 +188,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Hello} extends JViewLegacy
 		}
 		else
 		{
-			\$this->params->def('page_heading', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_DEFAULT_PAGE_TITLE'));
+			\$this->params->def('page_heading', JText::_('COM_${2/(.+)/\U\1/g}_DEFAULT_PAGE_TITLE'));
 		}
 
 		\$title = \$this->params->get('page_title', '');
@@ -196,7 +196,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Hello} extends JViewLegacy
 		\$id = (int) @\$menu->query['id'];
 
 		// If the menu item does not concern this ${1/(.+)/\L\1/g}
-		if (\$menu && (\$menu->query['option'] != 'com_${TM_PROJECT/(.+)/\L\1/g}' || \$menu->query['view'] != '${1/(.+)/\L\1/g}' || \$id != \$this->item->id))
+		if (\$menu && (\$menu->query['option'] != 'com_${2/(.+)/\L\1/g}' || \$menu->query['view'] != '${1/(.+)/\L\1/g}' || \$id != \$this->item->id))
 		{
 			// If this is not a single ${1/(.+)/\L\1/g} menu item, set the page title to the ${1/(.+)/\L\1/g} title
 			if (\$this->item->name)
@@ -205,11 +205,11 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Hello} extends JViewLegacy
 			}
 
 			\$path = array(array('title' => \$this->item->name, 'link' => ''));
-			\$category = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}')->get(\$this->item->catid);
+			\$category = JCategories::getInstance('${2/(.+)/\u\1/g}')->get(\$this->item->catid);
 
-			while ((\$menu->query['option'] != 'com_${TM_PROJECT/(.+)/\L\1/g}' || \$menu->query['view'] == '${1/(.+)/\L\1/g}' || \$id != \$category->id) && \$category->id > 1)
+			while ((\$menu->query['option'] != 'com_${2/(.+)/\L\1/g}' || \$menu->query['view'] == '${1/(.+)/\L\1/g}' || \$id != \$category->id) && \$category->id > 1)
 			{
-				\$path[] = array('title' => \$category->title, 'link' => ${TM_PROJECT/(.+)/\u\1/g}HelperRoute::getCategoryRoute(\$category->id));
+				\$path[] = array('title' => \$category->title, 'link' => ${2/(.+)/\u\1/g}HelperRoute::getCategoryRoute(\$category->id));
 				\$category = \$category->getParent();
 			}
 

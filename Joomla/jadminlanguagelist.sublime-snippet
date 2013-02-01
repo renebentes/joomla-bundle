@@ -17,6 +17,7 @@ COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_N_ITEMS_TRASHED_1="%d ${3/(.+)/\L\1/g} env
 COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_N_ITEMS_UNPUBLISHED="%d ${3/(.+)/\L\1/g} despublicad${4/(.+)/\L\1/g}s com sucesso."
 COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_N_ITEMS_UNPUBLISHED_0="Nenhum ${5/(.+)/\L\1/g} despublicad${4/(.+)/\L\1/g}."
 COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_N_ITEMS_UNPUBLISHED_1="%d ${3/(.+)/\L\1/g} despublicad${4/(.+)/\L\1/g} com sucesso."
+COM_${1/(.+)/\U\1/g}_NO_${2/(.+)/\U\1/g}="Nenhum ${5/(.+)/\L\1/g} cadastrado."
 ]]></content>
 	<tabTrigger>jadminlanguagelist</tabTrigger>
 </snippet>

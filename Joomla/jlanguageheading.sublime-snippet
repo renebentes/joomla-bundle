@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[${1:COM}_${2:${TM_PROJECT/(.+)/\U\1/g}}_HEADING_${3:HELLO}="$4"
+]]></content>
+	<tabTrigger>jlanguageheading</tabTrigger>
+</snippet>
