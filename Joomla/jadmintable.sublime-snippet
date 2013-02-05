@@ -129,7 +129,7 @@ class ${2/(.+)/\u\1/g}Table${1/(.+)/\u\1/g} extends JTable
 			// Existing item
 			\$this->modified = \$date->toSql();
 			\$this->modified_by = \$user->get('id');
-			\$this->version += 1;
+			\$this->version++;
 		}
 		else
 		{
@@ -153,7 +153,7 @@ class ${2/(.+)/\u\1/g}Table${1/(.+)/\u\1/g} extends JTable
 		\$table = JTable::getInstance('${1/(.+)/\u\1/g}', '${2/(.+)/\u\1/g}Table');
 		if (\$table->load(array('alias' => \$this->alias)) && (\$table->id != \$this->id || \$this->id == 0))
 		{
-			\$this->setError(JText::_('JLIB_DATABASE_ERROR_ARTICLE_UNIQUE_ALIAS'));
+			\$this->setError(JText::_('COM_${2/(.+)/\u\1/g}_DATABASE_ERROR_UNIQUE_ALIAS'));
 
 			return false;
 		}
