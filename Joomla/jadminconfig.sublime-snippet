@@ -5,7 +5,8 @@
 		<field name="rules" type="rules" label="JCONFIG_PERMISSIONS_LABEL" class="inputbox" filter="rules" validate="rules" component="com_${1:${TM_PROJECT/(.+)/\L\1/g}}" section="component" />
 	</fieldset>
 </config>
-
 ]]></content>
 	<tabTrigger>jadminconfig</tabTrigger>
 </snippet>
+
+

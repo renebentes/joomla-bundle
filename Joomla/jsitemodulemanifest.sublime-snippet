@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="${1:${TM_VERSION}}" client="site" method="upgrade">
+<extension type="module" version="${1:${TM_MANIFEST_VERSION}}" client="site" method="upgrade">
 	<name>mod_${2:hello}</name>
 	<author>${3:${TM_FULLNAME}}</author>
 	<creationDate>$4</creationDate>
@@ -8,7 +8,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>${7:${TM_EMAIL}}</authorEmail>
 	<authorUrl>${8:${TM_WEBSITE}}</authorUrl>
-	<version>${9:${TM_MANIFEST_VERSION}}</version>
+	<version>${9:${TM_VERSION}}</version>
 	<description>MOD_${2/(.+)/\U\1/g}_XML_DESCRIPTION</description>
 	<files>
 		<filename module="mod_${2/(.+)/\L\1/g}">mod_${2/(.+)/\L\1/g}.php</filename>
@@ -17,6 +17,12 @@
 		<filename>helper.php</filename>
 		<filename>index.html</filename>
 	</files>
+	<media folder="media" destination="mod_${2/(.+)/\L\1/g}">
+		<folder>css</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<filename>index.html</filename>
+	</media>
 	<languages folder="language">
 		<language tag="${10:${TM_LANGUAGE}}">$10/$10.mod_${2/(.+)/\L\1/g}.ini</language>
 		<language tag="$10">$10/$10.mod_${2/(.+)/\L\1/g}.sys.ini</language>

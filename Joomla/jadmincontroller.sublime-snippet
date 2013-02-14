@@ -8,7 +8,7 @@
  * @subpackage  com_${1/(.+)/\L\1/g}
  * @since       ${2:$TM_VERSION}
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Controller extends JController
+class ${1/(.+)/\u\1/g}Controller extends JController
 {
 	/**
 	 * @var		string	The default view.
