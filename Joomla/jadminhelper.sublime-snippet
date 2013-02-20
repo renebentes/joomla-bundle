@@ -1,14 +1,14 @@
 <snippet>
 	<content><![CDATA[/**
- * ${TM_PROJECT/(.+)/\u\1/g} component helper.
+ * ${1:${TM_PROJECT/(.+)/\u\1/g}} component helper.
  *
- * @package     $TM_PROJECT
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @package     ${1/(.+)/\u\1/g}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ * @since       ${2:${TM_VERSION}}
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Helper
+class ${1/(.+)/\u\1/g}Helper
 {
-	public static \$extension = 'com_${TM_PROJECT/(.+)/\L\1/g}';
+	public static \$extension = 'com_${1/(.+)/\L\1/g}';
 
 	/**
 	 * Configure the Linkbar.
@@ -17,18 +17,23 @@ class ${TM_PROJECT/(.+)/\u\1/g}Helper
 	 *
 	 * @return  void
      *
-	 * @since   $TM_VERSION
+	 * @since   $2
 	 */
 	public static function addSubmenu(\$vName)
 	{
-		JSubMenuHelper::addEntry(
-			JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SUBMENU_${TM_PROJECT/(.+)/\U\1/g}'),
-			'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${TM_PROJECT/(.+)/\L\1/g}',
-			\$vName == '${TM_PROJECT/(.+)/\L\1/g}'
+		JHtmlSidebar::addEntry(
+			JText::_('COM_${1/(.+)/\U\1/g}_SUBMENU_CPANEL'),
+			'index.php?option=com_company&view=cpanel',
+			$vName == 'cpanel'
 		);
 		JSubMenuHelper::addEntry(
-			JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SUBMENU_CATEGORIES'),
-			'index.php?option=com_categories&extension=com_${TM_PROJECT/(.+)/\L\1/g}',
+			JText::_('COM_${1/(.+)/\U\1/g}_SUBMENU_${1/(.+)/\U\1/g}'),
+			'index.php?option=com_${1/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}',
+			\$vName == '${1/(.+)/\L\1/g}'
+		);
+		JSubMenuHelper::addEntry(
+			JText::_('COM_${1/(.+)/\U\1/g}_SUBMENU_CATEGORIES'),
+			'index.php?option=com_categories&extension=com_${1/(.+)/\L\1/g}',
 			\$vName == 'categories'
 		);
 	}
@@ -40,7 +45,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Helper
 	 *
 	 * @return  JObject
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $2
 	 */
 	public static function getActions(\$categoryId = 0)
 	{
@@ -49,16 +54,16 @@ class ${TM_PROJECT/(.+)/\u\1/g}Helper
 
 		if (empty(\$categoryId))
 		{
-			\$assetName = 'com_${TM_PROJECT/(.+)/\L\1/g}';
+			\$assetName = 'com_${1/(.+)/\L\1/g}';
 			\$level = 'component';
 		}
 		else
 		{
-			\$assetName = 'com_${TM_PROJECT/(.+)/\L\1/g}.category.' . (int) \$categoryId;
+			\$assetName = 'com_${1/(.+)/\L\1/g}.category.' . (int) \$categoryId;
 			\$level = 'category';
 		}
 
-		\$actions = JAccess::getActions('com_${TM_PROJECT/(.+)/\L\1/g}', \$level);
+		\$actions = JAccess::getActions('com_${1/(.+)/\L\1/g}', \$level);
 
 		foreach (\$actions as \$action)
 		{

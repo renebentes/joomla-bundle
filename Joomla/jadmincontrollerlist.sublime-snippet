@@ -8,11 +8,8 @@
  * @subpackage  com_${2/(.+)/\L\1/g}
  * @since       ${3:${TM_VERSION}}
  */
-<<<<<<< HEAD
-class ${2/(.+)/\u\1/g}Controller${1/(.+)/\u\1/g} extends JControllerAdmin
-=======
+
 class ${2/(.+)/\u\1/g}Controller${1:Hellos} extends JControllerAdmin
->>>>>>> a3cc8202393759a158516b73237911b8f89b1690
 {
 	/**
 	 * @var		string	The prefix to use with controller messages.
@@ -51,7 +48,6 @@ class ${2/(.+)/\u\1/g}Controller${1:Hellos} extends JControllerAdmin
 		return \$model;
 	}
 }
-
 ]]></content>
 	<tabTrigger>jadmincontrollerlist</tabTrigger>
 </snippet>

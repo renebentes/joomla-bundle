@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[JSubMenuHelper::addEntry(
+	JText::_('COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_SUBMENU_${2:HELLO}'),
+	'index.php?option=com_${1/(.+)/\L\1/g}&view=${2/(.+)/\L\1/g}',
+	\$vName == '${2/(.+)/\L\1/g}');]]>
+	</content>
+	<tabTrigger>jadminhelpersubmenu</tabTrigger>
+</snippet>

@@ -41,8 +41,6 @@ class ${1/(.+)/\u\1/g}Controller extends JController
 
 		return \$this;
 	}
-}
-
-]]></content>
+}]]></content>
 	<tabTrigger>jadmincontroller</tabTrigger>
 </snippet>

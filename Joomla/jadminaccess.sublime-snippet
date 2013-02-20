@@ -17,7 +17,7 @@
 		<action name="core.edit.state" title="JACTION_EDITSTATE" description="COM_CATEGORIES_ACCESS_EDITSTATE_DESC" />
 		<action name="core.edit.own" title="JACTION_EDITOWN" description="COM_CATEGORIES_ACCESS_EDITOWN_DESC" />
 	</section>
-</access>
-]]></content>
+</access>]]>
+	</content>
 	<tabTrigger>jadminaccess</tabTrigger>
 </snippet>

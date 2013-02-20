@@ -11,8 +11,6 @@ jimport('joomla.application.component.controller');
 // Execute the task.
 \$controller = JController::getInstance('${1/(.+)/\u\1/g}');
 \$controller->execute(JRequest::getCmd('task'));
-\$controller->redirect();
-
-]]></content>
+\$controller->redirect();]]></content>
 	<tabTrigger>jadmincomponent</tabTrigger>
 </snippet>
