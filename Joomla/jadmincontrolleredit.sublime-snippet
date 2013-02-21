@@ -2,13 +2,13 @@
 	<content><![CDATA[jimport('joomla.application.component.controllerform');
 
 /**
- * ${1/(.+)/\u\1/g} controller class.
+ * ${1:Hello} controller class.
  *
  * @package     ${2:${TM_PROJECT}}
  * @subpackage  com_${2/(.+)/\L\1/g}
  * @since       ${3:${TM_VERSION}}
  */
-class ${2/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
+class ${2/(.+)/\u\1/g}Controller${1/(.+)/\u\1/g} extends JControllerForm
 {
 	/**
 	 * @var    string  The prefix to use with controller messages.
@@ -16,7 +16,6 @@ class ${2/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 	 */
 	protected \$text_prefix = 'COM_${2/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';
 }
-
 ]]></content>
 	<tabTrigger>jadmincontrolleredit</tabTrigger>
 </snippet>

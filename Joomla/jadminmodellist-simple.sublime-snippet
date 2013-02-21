@@ -119,7 +119,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hellos} extends JModelList
 				. ', a.ordering, a.published, a.created, a.created_by, a.checked_out, a.checked_out_time'
 			)
 		);
-		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}') . ' AS a');
+		\$query->from(\$db->quoteName('#__${2/(.+)/\L\1/g}') . ' AS a');
 
 		// Join over the users for the checked out user.
 		\$query->select('uc.name AS editor');

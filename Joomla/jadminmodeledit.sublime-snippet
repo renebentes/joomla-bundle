@@ -2,13 +2,13 @@
 	<content><![CDATA[jimport('joomla.application.component.modeladmin');
 
 /**
- * ${1/(.+)/\u\1/g} model.
+ * ${1:${TM_PROJECT/(.+)/\u\1/g} model edit.
  *
- * @package     $TM_PROJECT
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @package     ${1/(.+)/\u\1/g}}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ * @since       ${2:${TM_VERSION}}
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelAdmin
+class ${1/(.+)/\u\1/g}Model${3:Hello} extends JModelAdmin
 {
 	/**
 	 * Returns a JTable object, always creating it.
@@ -19,9 +19,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelAdmin
 	 *
 	 * @return  JTable  A database object
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $2
 	 */
-	public function getTable(\$type = '${1/(.+)/\u\1/g}', \$prefix = '${TM_PROJECT/(.+)/\u\1/g}Table', \$config = array())
+	public function getTable(\$type = '${3/(.+)/\u\1/g}', \$prefix = '${1/(.+)/\u\1/g}Table', \$config = array())
 	{
 		return JTable::getInstance(\$type, \$prefix, \$config);
 	}
@@ -34,12 +34,12 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelAdmin
 	 *
 	 * @return  mixed  A JForm object on success, false on failure
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $2
 	 */
 	public function getForm(\$data = array(), \$loadData = true)
 	{
 		// Get the form.
-		\$form = \$this->loadForm('com_${TM_PROJECT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', '${1/(.+)/\L\1/g}', array('control' => 'jform', 'load_data' => \$loadData));
+		\$form = \$this->loadForm('com_${1/(.+)/\L\1/g}.${3/(.+)/\L\1/g}', '${3/(.+)/\L\1/g}', array('control' => 'jform', 'load_data' => \$loadData));
 
 		if (empty(\$form))
 		{
@@ -54,12 +54,12 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelAdmin
 	 *
 	 * @return  array  The default data is an empty array.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $2
 	 */
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		\$data = JFactory::getApplication()->getUserState('com_${TM_PROJECT/(.+)/\L\1/g}.edit.${1/(.+)/\L\1/g}.data', array());
+		\$data = JFactory::getApplication()->getUserState('com_${1/(.+)/\L\1/g}.edit.${3/(.+)/\L\1/g}.data', array());
 
 		if (empty(\$data))
 		{
@@ -69,7 +69,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelAdmin
 		return \$data;
 	}
 }
-
 ]]></content>
 	<tabTrigger>jadminmodeledit</tabTrigger>
 </snippet>

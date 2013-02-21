@@ -87,12 +87,12 @@ class ${2/(.+)/\u\1/g}Table${1/(.+)/\u\1/g} extends JTable
 		}
 
 		// Set ordering
-		if ($this->published < 0) {
+		if (\$this->published < 0) {
 			// Set ordering to 0 if state is archived or trashed
-			$this->ordering = 0;
-		} elseif (empty($this->ordering)) {
+			\$this->ordering = 0;
+		} elseif (empty(\$this->ordering)) {
 			// Set ordering to last if ordering was 0
-			$this->ordering = self::getNextOrder('published >= 0');
+			\$this->ordering = self::getNextOrder('${6:state} >= 0');
 		}
 
 		// Check the publish down date is not earlier than publish up.
@@ -161,7 +161,6 @@ class ${2/(.+)/\u\1/g}Table${1/(.+)/\u\1/g} extends JTable
 		return parent::store(\$updateNulls);
 	}
 }
-
 ]]></content>
 	<tabTrigger>jadmintable</tabTrigger>
 </snippet>
