@@ -1,5 +1,10 @@
 <snippet>
-	<content><![CDATA[// Include the component HTML helpers.
+	<content><![CDATA[// Get document
+\$doc = JFactory::getDocument();
+\$doc->setTitle(JText::_('COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_TITLE'));
+\$doc->addStyleSheet(JURI::root() . 'media/com_${1/(.+)/\L\1/g}/css/backend.css');
+
+// Include the component HTML helpers.
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 // Load the tooltip behavior.

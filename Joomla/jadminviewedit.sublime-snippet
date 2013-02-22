@@ -39,14 +39,6 @@ class ${2/(.+)/\u\1/g}View${1/(.+)/\u\1/g} extends JView
 			return false;
 		}
 
-		// Get document
-		\$doc = JFactory::getDocument();
-		\$doc->setTitle(JText::_('COM_${2/(.+)/\U\1/g}_${1/(.+)/\L\1/g}_TITLE'));
-		\$doc->addStyleSheet(JURI::root() . 'media/com_${2/(.+)/\L\1/g}/css/backend.css');
-
-		// Include the component HTML helpers.
-		JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
-
 		\$this->addToolbar();
 
 		parent::display(\$tpl);

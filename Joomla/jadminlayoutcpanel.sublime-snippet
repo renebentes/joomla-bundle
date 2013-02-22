@@ -1,5 +1,14 @@
 <snippet>
-	<content><![CDATA[<div class="adminform">
+	<content><![CDATA[// Get document
+\$doc = JFactory::getDocument();
+\$doc->setTitle(JText::_('COM_${1/(.+)/\U\1/g}_CPANEL_TITLE'));
+\$doc->addStyleSheet(JURI::root() . 'media/com_${1/(.+)/\L\1/g}/css/backend.css');
+
+// Include the component HTML helpers.
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
+?>
+
+<div class="adminform">
 	<div class="cpanel-left">
 		<div id="cpanel">
 			<?php echo ${1:${TM_PROJECT/(.+)/\u\1/g}}Helper::button('${2:hellos}', '${2/(.+)(s\b)/\L\1/g}.png', JText::_('COM_${1/(.+)/\U\1/g}_QUICKICON_${2/(.+)/\U\1/g}')); ?>

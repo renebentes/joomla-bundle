@@ -4,7 +4,7 @@
 /**
  * ${1:Hello} table class.
  *
- * @package     ${2:${TM_PROJECT}}
+ * @package     ${2:${TM_PROJECT/(.+)/\u\1/g}}
  * @subpackage  com_${2/(.+)/\L\1/g}
  * @since       ${3:${TM_VERSION}}
  */
@@ -20,6 +20,7 @@ class ${2/(.+)/\u\1/g}Table${1/(.+)/\u\1/g} extends JTable
 	public function __construct(&\$db)
 	{
 		parent::__construct('#__${2/(.+)/\L\1/g}_${4:hellos}', 'id', \$db);
+		\$this->created = JFactory::getDate()->toSql();
 	}
 
 	/**
@@ -92,7 +93,7 @@ class ${2/(.+)/\u\1/g}Table${1/(.+)/\u\1/g} extends JTable
 			\$this->ordering = 0;
 		} elseif (empty(\$this->ordering)) {
 			// Set ordering to last if ordering was 0
-			\$this->ordering = self::getNextOrder('${6:state} >= 0');
+			\$this->ordering = self::getNextOrder(\$this->_db->quoteName('catid'). ' = ' . \$this->_db->Quote(\$this->catid). ' AND ${6:published} >= 0');
 		}
 
 		// Check the publish down date is not earlier than publish up.

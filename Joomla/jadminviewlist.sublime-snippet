@@ -2,13 +2,13 @@
 	<content><![CDATA[jimport('joomla.application.component.view');
 
 /**
- * View class for a list of ${1:Hellos}.
+ * View class for a list of ${1:hellos}.
  *
  * @package     ${2:${TM_PROJECT/(.+)/\u\1/g}}
  * @subpackage  com_${2/(.+)/\L\1/g}
  * @since       ${3:${TM_VERSION}}
  */
-class ${2/(.+)/\u\1/g}View${1/(.+)/\L\1/g} extends JView
+class ${2/(.+)/\u\1/g}View${1/(.+)/\u\1/g} extends JView
 {
 	protected \$items;
 
@@ -38,14 +38,6 @@ class ${2/(.+)/\u\1/g}View${1/(.+)/\L\1/g} extends JView
 			JError::raiseError(500, implode("\n", \$errors));
 			return false;
 		}
-
-		// Get document
-		\$doc = JFactory::getDocument();
-		\$doc->setTitle(JText::_('COM_${2/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_TITLE'));
-		\$doc->addStyleSheet(JURI::root() . 'media/com_${2/(.+)/\L\1/g}/css/backend.css');
-
-		// Include the component HTML helpers.
-		JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 		\$this->addToolbar();
 
