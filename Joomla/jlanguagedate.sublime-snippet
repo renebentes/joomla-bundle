@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[; ${1:${TM_PROJECT/(.+)/\u\1/g}} Date Formats
+DATE_FORMAT_MK$2="d/m/y"
+]]></content>
+	<tabTrigger>jlanguagedate</tabTrigger>
+</snippet>

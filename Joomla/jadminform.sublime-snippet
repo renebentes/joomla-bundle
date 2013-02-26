@@ -20,6 +20,7 @@
 		</field>
 		<field name="description" type="editor" class="inputbox" filter="JComponentHelper::filterText" buttons="true" hide="readmore,pagebreak" label="JGLOBAL_DESCRIPTION" description="COM_${1/(.+)/\U\1/g}_FIELD_DESCRIPTION_DESC" />
 	</fieldset>
+
 	<fields name="publish">
 		<fieldset name="jpublish" label="JGLOBAL_FIELDSET_PUBLISHING">
 			<field name="created" type="calendar" class="inputbox" size="22" format="%Y-%m-%d %H:%M:%S" filter="user_utc" label="JGLOBAL_FIELD_CREATED_LABEL" description="JGLOBAL_FIELD_CREATED_DESC" />
@@ -27,7 +28,7 @@
 			<field name="created_by_alias" type="text" class="inputbox" size="20" label="JGLOBAL_FIELD_CREATED_BY_ALIAS_LABEL" description="JGLOBAL_FIELD_CREATED_BY_ALIAS_DESC" />
 			<field name="version" type="text" class="readonly" size="6" readonly="true" filter="unset" label="COM_${1/(.+)/\U\1/g}_FIELD_VERSION_LABEL" description="COM_${1/(.+)/\U\1/g}_FIELD_VERSION_DESC" />
 			<field name="modified" type="calendar" class="readonly" size="22" readonly="true" format="%Y-%m-%d %H:%M:%S" filter="user_utc" label="JGLOBAL_FIELD_MODIFIED_LABEL" description="COM_${1/(.+)/\U\1/g}_FIELD_MODIFIED_DESC" />
-			<field name="modified_by" type="user" class="readonly" readonly="true" filter="unset" label="JGLOBAL_FIELD_MODIFIED_BY_LABEL" />
+			<field name="modified_by" type="user" class="readonly" readonly="true" filter="unset" label="JGLOBAL_FIELD_MODIFIED_BY_LABEL" description="JGLOBAL_FIELD_MODIFIED_BY_DESC" />
 			<field name="publish_up" type="calendar" class="inputbox" format="%Y-%m-%d %H:%M:%S" size="22" filter="user_utc" label="JGLOBAL_FIELD_PUBLISH_UP_LABEL" description="JGLOBAL_FIELD_PUBLISH_UP_DESC" />
 			<field name="publish_down" type="calendar" class="inputbox" format="%Y-%m-%d %H:%M:%S" size="22" filter="user_utc" label="JGLOBAL_FIELD_PUBLISH_DOWN_LABEL" description="JGLOBAL_FIELD_PUBLISH_DOWN_DESC" />
 			<field name="checked_out" type="hidden" filter="unset" />
@@ -35,11 +36,13 @@
 			<field name="hits" type="text" class="readonly" size="6" readonly="true" filter="unset" label="JGLOBAL_HITS" description="COM_${1/(.+)/\U\1/g}_FIELD_HITS_DESC" />
 		</fieldset>
 	</fields>
+
 	<fields name="params">
-		<fieldset name="jbasic" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
+		<fieldset name="jparams" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
 
 		</fieldset>
 	</fields>
+
 	<fields name="metadata">
 		<fieldset name="jmetadata" label="JGLOBAL_FIELDSET_METADATA_OPTIONS">
 			<field name="robots" type="list" label="JFIELD_METADATA_ROBOTS_LABEL" description="JFIELD_METADATA_ROBOTS_DESC">
