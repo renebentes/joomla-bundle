@@ -1,6 +1,5 @@
 <snippet>
 	<content><![CDATA[?>
-
 <?php echo JHtml::_('sliders.start', 'stat-pane'); ?>
 <?php echo JHtml::_('sliders.panel', JText::_('COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_FIELDSET_${2/(.+)/\U\1/g}'), '${2:hello}-panel'); ?>
 <table class="adminlist">
@@ -40,13 +39,13 @@
 				<?php echo \$this->escape(\$item->id); ?>
 			</td>
 			<td>
-				<a href="<?php echo \$link; ?>"><?php echo \$this->escape(\$item->${3/(.+)\/L\1/g}); ?></a>
+				<a href="<?php echo \$link; ?>"><?php echo \$this->escape(\$item->${3/(.+)/\L\1/g}); ?></a>
 			</td>
 			<td class="center nowrap">
 				<?php echo JHtml::_('date', \$item->created, JText::_('DATE_FORMAT_LC4')); ?>
 			</td>
 			<td class="center nowrap">
-				<?php echo JHtml::_('date', \$item->created, JText::_('DATE_FORMAT_LC4')); ?>
+				<?php echo \$this->escape(\$item->hits); ?>
 			</td>
 		</tr>
 		<?php \$k = 1 - \$k; ?>

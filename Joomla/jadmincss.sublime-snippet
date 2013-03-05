@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[/* toolbar */
+.icon-48-${1:hellos}, .icon-48-${2:hello} {
+	background: url(../images/toolbar/${2/(.+)/\L\1/g}.png) no-repeat left;
+}
+
+.icon-48-cpanel {
+	background: url(../images/toolbar/cpanel.png) no-repeat left !important;
+}
+
+.icon-48-${2/(.+)/\L\1/g}-categories {
+	background: url(../images/toolbar/category.png) no-repeat left;
+}
+]]>
+	</content>
+	<tabTrigger>jadmincss</tabTrigger>
+</snippet>

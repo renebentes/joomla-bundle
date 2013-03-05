@@ -21,15 +21,15 @@ class ${1/(.+)/\u\1/g}Helper
 	 */
 	public static function addSubmenu(\$vName)
 	{
-		JHtmlSidebar::addEntry(
+		JSubMenuHelper::addEntry(
 			JText::_('COM_${1/(.+)/\U\1/g}_SUBMENU_CPANEL'),
 			'index.php?option=com_company&view=cpanel',
-			$vName == 'cpanel'
+			\$vName == 'cpanel'
 		);
 		JSubMenuHelper::addEntry(
-			JText::_('COM_${1/(.+)/\U\1/g}_SUBMENU_${1/(.+)/\U\1/g}'),
-			'index.php?option=com_${1/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}',
-			\$vName == '${1/(.+)/\L\1/g}'
+			JText::_('COM_${1/(.+)/\U\1/g}_SUBMENU_${3:HELLOS}'),
+			'index.php?option=com_${1/(.+)/\L\1/g}&view=${3/(.+)/\L\1/g}',
+			\$vName == '${3/(.+)/\L\1/g}'
 		);
 		JSubMenuHelper::addEntry(
 			JText::_('COM_${1/(.+)/\U\1/g}_SUBMENU_CATEGORIES'),

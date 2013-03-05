@@ -2,9 +2,9 @@
 	<content><![CDATA[jimport('joomla.application.component.modeladmin');
 
 /**
- * ${1:${TM_PROJECT/(.+)/\u\1/g} model edit.
+ * ${1:${TM_PROJECT/(.+)/\u\1/g}} model edit.
  *
- * @package     ${1/(.+)/\u\1/g}}
+ * @package     ${1/(.+)/\u\1/g}
  * @subpackage  com_${1/(.+)/\L\1/g}
  * @since       ${2:${TM_VERSION}}
  */
