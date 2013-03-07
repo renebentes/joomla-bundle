@@ -1,60 +1,86 @@
 <snippet>
-	<content><![CDATA[?>
-<?php echo JHtml::_('sliders.start', 'stat-pane'); ?>
-<?php echo JHtml::_('sliders.panel', JText::_('COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_FIELDSET_${2/(.+)/\U\1/g}'), '${2:hello}-panel'); ?>
-<table class="adminlist">
-	<thead>
-		<tr>
-			<th width="1%" class="nowrap">
-				<?php echo JText::_('JGRID_HEADING_ID'); ?>
-			</th>
-			<th class="left">
-				<?php echo JText::_('COM_${1/(.+)/\U\1/g}_HEADING_${3:TITLE}'); ?>
-			</th>
-			<th width="10%">
-				<?php echo JText::_('JDATE'); ?>
-			</th>
-			<th width="5%">
-				<?php echo JText::_('GLOBAL_HITS'); ?>
-			</th>
-		</tr>
-	</thead>
-	<tfoot>
-		<tr>
-			<td colspan="3">&nbsp;</td>
-		</tr>
-	</tfoot>
-	<tbody>
-	<?php
-	\$k = 0;
-	if (\$this->items):
-		foreach (\$this->items as \$item):
+	<content><![CDATA[// Load the tooltip behavior.
+JHtml::_('behavior.tooltip');
 
-		// Define variables
-		\$link = JRoute::_('index.php?option=com_${1/(.+)/\L\1/g}&task=${4:hello}.edit&id=' . \$item->id);
-		\$component = JRequest::getCmd('option');
-		?>
-		<tr class="row<?php echo \$k; ?>">
-			<td class="center">
-				<?php echo \$this->escape(\$item->id); ?>
-			</td>
-			<td>
-				<a href="<?php echo \$link; ?>"><?php echo \$this->escape(\$item->${3/(.+)/\L\1/g}); ?></a>
-			</td>
-			<td class="center nowrap">
-				<?php echo JHtml::_('date', \$item->created, JText::_('DATE_FORMAT_LC4')); ?>
-			</td>
-			<td class="center nowrap">
-				<?php echo \$this->escape(\$item->hits); ?>
-			</td>
-		</tr>
-		<?php \$k = 1 - \$k; ?>
-		<?php endforeach; ?>
-	<?php else: ?>
-		<?php echo '<tr class="row' . \$k . '"><td colspan="3" align="center">' . JText::_('COM_${1/(.+)/\U\1/g}_NO_RESULTS') . '</td></tr>'; ?>
-	<?php endif; ?>
-	</tbody>
-</table>
+// Initialise variables.
+\$user      = JFactory::getUser();
+\$userId    = \$user->get('id');
+?>
+<?php echo JHtml::_('sliders.start', 'stat-pane'); ?>
+<?php echo JHtml::_('sliders.panel', JText::_('COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_FIELDSET_${2/(.+)/\U\1/g}'), '${2/(.+)/\L\1/g}-panel'); ?>
+<form action="<?php echo JRoute::_('index.php?option=com_${1/(.+)/\L\1/g}&view=${2:hellos}'); ?>" method="post" name="adminForm" id="adminForm">
+	<table class="adminlist">
+		<thead>
+			<tr>
+				<th width="1%" class="nowrap">
+					<?php echo JText::_('JGRID_HEADING_ID'); ?>
+				</th>
+				<th class="left">
+					<?php echo JText::_('COM_${1/(.+)/\U\1/g}_HEADING_${3:TITLE}'); ?>
+				</th>
+				<th width="10%">
+					<?php echo JText::_('JDATE'); ?>
+				</th>
+				<th width="10%">
+					<?php echo JText::_('JSTATUS'); ?>
+				</th>
+				<th width="5%">
+					<?php echo JText::_('JGLOBAL_HITS'); ?>
+				</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<td colspan="5">&nbsp;</td>
+			</tr>
+		</tfoot>
+		<tbody>
+		<?php
+		\$k = 0;
+		if (\$this->items):
+			foreach (\$this->items as \$i => \$item):
+				\$canEdit    = \$user->authorise('core.edit', 'com_${1/(.+)/\L\1/g}.category.' . \$item->catid);
+				\$canCheckin = \$user->authorise('core.manage', 'com_checkin') || \$item->checked_out == \$userId || \$item->checked_out == 0;
+				\$canChange  = \$user->authorise('core.edit.state', 'com_${1/(.+)/\L\1/g}.category.' . \$item->catid) && \$canCheckin;
+			?>
+			<tr class="row<?php echo \$k; ?>">
+				<td class="center">
+					<?php echo \$this->escape(\$item->id); ?>
+				</td>
+				<td>
+					<?php if (\$item->checked_out): ?>
+						<?php echo JHtml::_('jgrid.checkedout', \$i, \$item->editor, \$item->checked_out_time, '${2/(.+)/\L\1/g}.', \$canCheckin); ?>
+					<?php endif; ?>
+					<?php if (\$canEdit): ?>
+						<a href="<?php echo JRoute::_('index.php?option=com_${1/(.+)/\L\1/g}&task=${4:hello}.edit&id=' . (int) \$item->id); ?>">
+							<?php echo \$this->escape(\$item->${3/(.+)/\L\1/g}); ?>
+						</a>
+					<?php else: ?>
+						<?php echo \$this->escape(\$item->${3/(.+)/\L\1/g}); ?>
+					<?php endif; ?>
+				</td>
+				<td class="center">
+					<?php echo JHtml::_('date', \$item->created, JText::_('${5:DATE_FORMAT_LC4}')); ?>
+				</td>
+				<td class="center">
+						<?php echo JHtml::_('jgrid.published', \$item->published, \$i, '${2/(.+)/\L\1/g}.', \$canChange, 'cb', \$item->publish_up, \$item->publish_down); ?>
+					</td>
+				<td class="center">
+					<?php echo \$this->escape(\$item->hits); ?>
+				</td>
+			</tr>
+			<?php \$k = 1 - \$k; ?>
+			<?php endforeach; ?>
+		<?php else: ?>
+			<?php echo '<tr class="row' . \$k . '"><td colspan="5" align="center">' . JText::_('COM_${1/(.+)/\U\1/g}_NO_RESULTS') . '</td></tr>'; ?>
+		<?php endif; ?>
+		</tbody>
+	</table>
+	<div>
+		<input type="hidden" name="task" value="" />
+		<?php echo JHtml::_('form.token'); ?>
+	</div>
+</form>
 <?php echo JHtml::_('sliders.end'); ?>
 ]]></content>
 	<tabTrigger>jadminlayoutstats</tabTrigger>

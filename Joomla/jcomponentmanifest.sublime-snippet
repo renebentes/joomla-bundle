@@ -49,9 +49,9 @@
 	<administration>
 		<menu view="cpanel" img="../media/com_${2/(.+)/\L\1/g}/images/menu/${2/(.+)/\L\1/g}.png" link="option=com_${2/(.+)/\L\1/g}" alt="${2/(.+)/\u\1/g}">com_${2/(.+)/\L\1/g}</menu>
 		<submenu>
-			<menu view="cpanel" img="../media/com_${2/(.+)/\L\1/g}/images/menu/cpanel.png" link="option=com_${2/(.+)/\L\1/g}" alt="${2/(.+)/\u\1/g}/Cpanel">com_${2/(.+)/\L\1/g}_cpanel</menu>
-			<menu view="${11:hello}" img="../media/com_${2/(.+)/\L\1/g}/images/menu/${11/(.+)/\L\1/g}.png" link="option=com_${2/(.+)/\L\1/g}&amp;view=${11/(.+)/\L\1/g}" alt="${2/(.+)/\u\1/g}/${11/(.+)/\u\1/g}">com_${2/(.+)/\L\1/g}_${11/(.+)/\L\1/g}</menu>
-			<menu view="categories" img="class:category" link="option=com_categories&amp;extension=com_${2/(.+)/\L\1/g}" alt="${2/(.+)/\u\1/g}/Categories">com_${2/(.+)/\L\1/g}_categories</menu>
+			<menu view="cpanel" img="../media/com_${2/(.+)/\L\1/g}/images/menu/${2/(.+)/\L\1/g}_cpanel.png" link="option=com_${2/(.+)/\L\1/g}" alt="${2/(.+)/\u\1/g}/Cpanel">com_${2/(.+)/\L\1/g}_cpanel</menu>
+			<menu view="${11:hello}" img="../media/com_${2/(.+)/\L\1/g}/images/menu/${12:${11/(.+)/\L\1/g}}.png" link="option=com_${2/(.+)/\L\1/g}&amp;view=${11/(.+)/\L\1/g}" alt="${2/(.+)/\u\1/g}/${11/(.+)/\u\1/g}">com_${2/(.+)/\L\1/g}_${11/(.+)/\L\1/g}</menu>
+			<menu view="categories" img="../media/com_${2/(.+)/\L\1/g}/images/menu/${2/(.+)/\L\1/g}_category.png" link="option=com_categories&amp;extension=com_${2/(.+)/\L\1/g}" alt="${2/(.+)/\u\1/g}/Categories">com_${2/(.+)/\L\1/g}_categories</menu>
 		</submenu>
 		<files folder="admin">
 			<folder>controllers</folder>

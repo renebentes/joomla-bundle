@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[ ; ${1:${TM_PROJECT/(.+)/\u\1/g}} Radio Fields Options
+COM_${1/(.+)/\U\1/g}_FIELD_${2:NAME}_OPTION_${3:VALUE}="$4"
+]]>
+	</content>
+	<tabTrigger>jadminlanguageoptions</tabTrigger>
+</snippet>

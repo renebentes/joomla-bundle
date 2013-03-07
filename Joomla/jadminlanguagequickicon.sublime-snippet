@@ -2,6 +2,7 @@
 	<content><![CDATA[; Quick Icons
 COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_QUICKICON_CPANEL="Painel de Controle"
 COM_${1/(.+)/\U\1/g}_QUICKICON_${2:HELLO}="${3:Hello}"
+COM_${1/(.+)/\U\1/g}_QUICKICON_CATEGORIES="Categorias"
 ]]></content>
 	<tabTrigger>jadminlanguagequickicon</tabTrigger>
 </snippet>

@@ -2,10 +2,12 @@
 	<content><![CDATA[; Top Submenus
 COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_CPANEL="Painel de Controle"
 COM_${1/(.+)/\U\1/g}_${2:HELLO}="${3:Hello}"
+COM_${1/(.+)/\U\1/g}_CATEGORIES="Categorias"
 
 ; Submenus
 COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_SUBMENU_CPANEL="Painel de Controle"
 COM_${1/(.+)/\U\1/g}_SUBMENU_${2:HELLO}="${3:Hello}"
+COM_${1/(.+)/\U\1/g}_SUBMENU_CATEGORIES="Categorias"
 ]]></content>
 	<tabTrigger>jadminlanguagesubmenu</tabTrigger>
 </snippet>

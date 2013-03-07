@@ -14,7 +14,14 @@ public static function button(\$controller, \$image, \$text)
 {
 	// Define variables
 	\$option = JRequest::getCmd('option');
-	\$link   = JRoute::_('index.php?option=' . \$option . '&view=' . \$controller, false);
+	if (\$controller == 'categories')
+	{
+		\$link   = JRoute::_('index.php?option=com_categories&extension=' . \$option, false);
+	}
+	else
+	{
+		\$link   = JRoute::_('index.php?option=' . \$option . '&view=' . \$controller, false);
+	}
 
 	\$html[] = '<div class="icon-wrapper">';
 	\$html[] = '<div class="icon">';

@@ -1,6 +1,7 @@
 <snippet>
 	<content><![CDATA[; ${1:${TM_PROJECT/(.+)/\u\1/g}} Titles
-COM_${1/(.+)/\U\1/g}_MANAGER_${2:HELLOS}="Gerenciador de ${3:Hellos}."
+COM_${1/(.+)/\U\1/g}_MANAGER_${2:HELLOS}="Gerenciador de ${3:Hellos}: ${3/(.+)/\u\1/g}"
+COM_${1/(.+)/\U\1/g}_MANAGER_CPANEL="Gerenciador de ${3/(.+)/\u\1/g}: Painel de Controle"
 COM_${1/(.+)/\U\1/g}_CPANEL_TITLE="Painel de Controle"
 COM_${1/(.+)/\U\1/g}_${4:HELLO}_ADD="Adicionar ${5:Hello}"
 COM_${1/(.+)/\U\1/g}_${4/(.+)/\U\1/g}_EDIT="Editar ${5/(.+)/\u\1/g}"

@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[; ${1:${TM_PROJECT/(.+)/\u\1/g}} Fieldset
+	<content><![CDATA[; ${1:${TM_PROJECT/(.+)/\u\1/g}} Fieldsets
 COM_${1/(.+)/\U\1/g}_FIELDSET_${2:HELLO}="$3"
 ]]></content>
 	<tabTrigger>jlanguagefieldset</tabTrigger>
