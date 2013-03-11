@@ -2,21 +2,21 @@
 	<content><![CDATA[jimport('joomla.application.component.modelitem');
 
 /**
- * ${TM_PROJECT/(.+)/\u\1/g} Component ${1/(.+)/\u\1/g} Model
+ * ${1:${TM_PROJECT/(.+)/\u\1/g}} Component ${2/(.+)/\u\1/g} Model
  *
- * @package     $TM_PROJECT
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @package     ${1/(.+)/\L\1/g}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ * @since       ${3:${TM_VERSION}}
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelItem
+class ${1/(.+)/\u\1/g}Model${2:Hello} extends JModelItem
 {
 	/**
 	 * Model context string.
 	 *
 	 * @var     string
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
-	protected \$_context = 'com_${TM_PROJECT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
+	protected \$_context = 'com_${1/(.+)/\L\1/g}.${2/(.+)/\L\1/g}';
 
 	/**
 	 * Method to auto-populate the model state.
@@ -25,7 +25,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelItem
 	 *
 	 * @return  void
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	protected function populateState()
 	{
@@ -45,7 +45,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelItem
 		// Get the user object.
 		\$user = JFactory::getUser();
 
-		if ((!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}')) &&  (!\$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}')))
+		if ((!\$user->authorise('core.edit.state', 'com_${1/(.+)/\L\1/g}')) &&  (!\$user->authorise('core.edit', 'com_${1/(.+)/\L\1/g}')))
 		{
 			\$this->setState('filter.published', 1);
 			\$this->setState('filter.archived', 2);
@@ -53,9 +53,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelItem
 	}
 
 	/**
-	 * Method to get ${1/(.+)/\L\1/g} data.
+	 * Method to get ${2/(.+)/\L\1/g} data.
 	 *
-	 * @param   integer  \$pk  The id of the ${1/(.+)/\L\1/g}.
+	 * @param   integer  \$pk  The id of the ${2/(.+)/\L\1/g}.
 	 *
 	 * @return  mixed  Menu item data object on success, false on failure.
 	 *
@@ -64,7 +64,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelItem
 	public function &getItem(\$pk = null)
 	{
 		// Initialise variables.
-		\$pk = (!empty(\$pk)) ? \$pk : (int) \$this->getState('${1/(.+)/\L\1/g}.id');
+		\$pk = (!empty(\$pk)) ? \$pk : (int) \$this->getState('${2/(.+)/\L\1/g}.id');
 
 		if (\$this->_item === null)
 		{
@@ -79,7 +79,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelItem
 				\$query = \$db->getQuery(true);
 
 				\$query->select(\$this->getState('item.select', 'a.*'));
-				\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}_${2:hellos} AS a');
+				\$query->from('#__${1/(.+)/\L\1/g}_${4:hellos} AS a');
 
 				// Join on category table.
 				\$query->select('c.title AS category_title, c.alias AS category_alias, c.access AS category_access');
@@ -122,13 +122,13 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelItem
 
 				if (empty(\$data))
 				{
-					throw new JException(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'), 404);
+					throw new JException(JText::_('COM_${1/(.+)/\U\1/g}_ERROR_${2/(.+)/\U\1/g}_NOT_FOUND'), 404);
 				}
 
 				// Check for published state if filter set.
 				if (((is_numeric(\$published)) || (is_numeric(\$archived))) && ((\$data->published != \$published) && (\$data->published != \$archived)))
 				{
-					JError::raiseError(404, JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'));
+					JError::raiseError(404, JText::_('COM_${1/(.+)/\U\1/g}_ERROR_${2/(.+)/\U\1/g}_NOT_FOUND'));
 				}
 
 				// Convert parameter fields to objects.
@@ -168,7 +168,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelItem
 		return \$this->_item[\$pk];
 	}
 }
-
 ]]></content>
 	<tabTrigger>jsitemodelitem</tabTrigger>
 </snippet>

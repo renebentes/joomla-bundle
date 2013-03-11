@@ -1,7 +1,7 @@
 <snippet>
-	<content><![CDATA[; Menu
-COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_${2:HELLO}_VIEW_DEFAULT_TITLE="$3"
-COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_${2/(.+)/\U\1/g}_VIEW_DEFAULT_OPTION="${4:Padrão}"
-COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_${2/(.+)/\U\1/g}_VIEW_DEFAULT_DESC="$5"]]></content>
+	<content><![CDATA[; ${1:${TM_PROJECT/(.+)/\u\1/g}} Menu
+COM_${1/(.+)/\U\1/g}_${2:HELLO}_VIEW_DEFAULT_TITLE="$3"
+COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VIEW_DEFAULT_OPTION="${4:Padrão}"
+COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VIEW_DEFAULT_DESC="$5"]]></content>
 	<tabTrigger>jlanguagemenu</tabTrigger>
 </snippet>

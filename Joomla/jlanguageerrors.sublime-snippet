@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[; ${1:${TM_PROJECT/(.+)/\u\1/g}} Errors
+COM_${1/(.+)/\U\1/g}_DATABASE_ERROR_UNIQUE_ALIAS="Já existe um ${2:item} cadastrado com este apelido. Por favor, informe um novo."
+COM_${1/(.+)/\U\1/g}_WARNING_PROVIDE_VALID_NAME="Por favor, forneça um ${3:título} adequado e que não seja em branco."
+COM_${1/(.+)/\U\1/g}_ERROR_${4:HELLO}_NOT_FOUND="${2/(.+)/\u\1/g} não encontrad${6:o}"
+]]></content>
+	<tabTrigger>jlanguageerrors</tabTrigger>
+</snippet>

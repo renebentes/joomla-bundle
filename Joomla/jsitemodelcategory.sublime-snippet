@@ -2,28 +2,31 @@
 	<content><![CDATA[jimport('joomla.application.component.modellist');
 
 /**
- * ${TM_PROJECT/(.+)/\u\1/g} Component ${1/(.+)/\u\1/g} Model
+ * ${1:${TM_PROJECT/(.+)/\u\1/g}} Component ${2/(.+)/\u\1/g} Model
  *
- * @package     $TM_PROJECT
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @package     ${1/(.+)/\u\1/g}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ * @since       ${3:${TM_VERSION}}
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
+class ${1/(.+)/\u\1/g}Model${2:Category} extends JModelList
 {
 	/**
-	 * ${1/(.+)/\u\1/g} items data
+	 * ${2/(.+)/\u\1/g} items data
 	 *
 	 * @var     array
 	 */
 	protected \$_item = null;
 
-	protected \$_articles = null;
-
-	protected \$_siblings = null;
-
 	protected \$_children = null;
 
 	protected \$_parent = null;
+
+	/**
+	 * Model context string.
+	 *
+	 * @var		string
+	 */
+	protected \$_context = 'com_${1/(.+)/\L\1/g}.category';
 
 	/**
 	 * The category that applies.
@@ -34,7 +37,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	protected \$_category = null;
 
 	/**
-	 * The list of other ${TM_PROJECT/(.+)(s\b)/\L\1/g} categories.
+	 * The list of other ${1/(.+)(s\b)/\L\1/g} categories.
 	 *
 	 * @access	protected
 	 * @var		array
@@ -47,7 +50,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	 * @param   array  \$config  An optional associative array of configuration settings.
 	 *
 	 * @see     JController
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	public function __construct(\$config = array())
 	{
@@ -55,7 +58,10 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 		{
 			\$config['filter_fields'] = array(
 				'id', 'a.id',
-				'name', 'a.name',
+				'${4:name}', 'a.${4/(.+)/\L\1/g}',
+				'alias', 'a.alias',
+				'catid', 'a.catid', 'category_title',
+				'${5:published}', 'a.${5/(.+)/\L\1/g}',
 				'ordering', 'a.ordering',
 			);
 		}
@@ -64,11 +70,75 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	}
 
 	/**
+	 * Method to auto-populate the model state.
+	 *
+	 * Note. Calling getState in this method will result in recursion.
+	 *
+	 * @param   string  \$ordering   An optional ordering field.
+	 * @param   string  \$direction  An optional direction (asc|desc).
+	 *
+	 * @return  void
+	 *
+	 * @since   $3
+	 */
+	protected function populateState(\$ordering = null, \$direction = null)
+	{
+		// Initialise variables.
+		\$app	= JFactory::getApplication('site');
+		\$id = JRequest::getInt('id');
+		\$this->setState('category.id', \$id);
+
+		\$params	= JComponentHelper::getParams('com_${1/(.+)/\L\1/g}');
+
+		// List state information
+		\$limit = \$app->getUserStateFromRequest('global.list.limit', 'limit', \$app->getCfg('list_limit'), 'uint');
+		\$this->setState('list.limit', \$limit);
+
+		\$limitstart = JRequest::getUInt('limitstart', 0);
+		\$this->setState('list.start', \$limitstart);
+
+		\$orderCol = JRequest::getCmd('filter_order', 'ordering');
+
+		if (!in_array(\$orderCol, \$this->filter_fields))
+		{
+			\$orderCol = 'ordering';
+		}
+
+		\$this->setState('list.ordering', \$orderCol);
+
+		\$listOrder = JRequest::getCmd('filter_order_Dir', 'ASC');
+
+		if (!in_array(strtoupper(\$listOrder), array('ASC', 'DESC', '')))
+		{
+			\$listOrder = 'ASC';
+		}
+
+		\$this->setState('list.direction', \$listOrder);
+
+		// Get the user object.
+		\$user = JFactory::getUser();
+
+		if ((!\$user->authorise('core.edit.state', '${2/(.+)/\L\1/g}')) &&  (!\$user->authorise('core.edit', '${2/(.+)/\L\1/g}')))
+		{
+			// Limit to published for people who can't edit or edit.state.
+			\$this->setState('filter.published',	1);
+
+			// Filter by start and end dates.
+			\$this->setState('filter.publish_date', true);
+		}
+
+		\$this->setState('filter.language', \$app->getLanguageFilter());
+
+		// Load the parameters.
+		\$this->setState('params', \$params);
+	}
+
+	/**
 	 * Method to get a list of items.
 	 *
 	 * @return  mixed  An array of objects on success, false on failure.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	public function getItems()
 	{
@@ -95,7 +165,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	 *
 	 * @return  string  An SQL query
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	protected function getListQuery()
 	{
@@ -108,7 +178,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 
 		// Select required fields from the categories.
 		\$query->select(\$this->getState('list.select', 'a.*'));
-		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}') . ' AS a');
+		\$query->from(\$db->quoteName('#__${1/(.+)/\L\1/g}') . ' AS a');
 		\$query->where('a.access IN (' . \$groups . ')');
 
 		// Filter by category.
@@ -151,77 +221,13 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	}
 
 	/**
-	 * Method to auto-populate the model state.
-	 *
-	 * Note. Calling getState in this method will result in recursion.
-	 *
-	 * @param   string  \$ordering   An optional ordering field.
-	 * @param   string  \$direction  An optional direction (asc|desc).
-	 *
-	 * @return  void
-	 *
-	 * @since   $TM_VERSION
-	 */
-	protected function populateState(\$ordering = null, \$direction = null)
-	{
-		// Initialise variables.
-		\$app	= JFactory::getApplication();
-		\$params	= JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
-
-		// List state information
-		\$limit = \$app->getUserStateFromRequest('global.list.limit', 'limit', \$app->getCfg('list_limit'), 'uint');
-		\$this->setState('list.limit', \$limit);
-
-		\$limitstart = JRequest::getUInt('limitstart', 0);
-		\$this->setState('list.start', \$limitstart);
-
-		\$orderCol = JRequest::getCmd('filter_order', 'ordering');
-
-		if (!in_array(\$orderCol, \$this->filter_fields))
-		{
-			\$orderCol = 'ordering';
-		}
-
-		\$this->setState('list.ordering', \$orderCol);
-
-		\$listOrder = JRequest::getCmd('filter_order_Dir', 'ASC');
-
-		if (!in_array(strtoupper(\$listOrder), array('ASC', 'DESC', '')))
-		{
-			\$listOrder = 'ASC';
-		}
-
-		\$this->setState('list.direction', \$listOrder);
-
-		\$id = JRequest::getVar('id', 0, '', 'int');
-		\$this->setState('category.id', \$id);
-
-		// Get the user object.
-		\$user = JFactory::getUser();
-
-		if ((!\$user->authorise('core.edit.state', '${1/(.+)/\L\1/g}')) &&  (!\$user->authorise('core.edit', '${1/(.+)/\L\1/g}')))
-		{
-			// Limit to published for people who can't edit or edit.state.
-			\$this->setState('filter.published',	1);
-
-			// Filter by start and end dates.
-			\$this->setState('filter.publish_date', true);
-		}
-
-		\$this->setState('filter.language', \$app->getLanguageFilter());
-
-		// Load the parameters.
-		\$this->setState('params', \$params);
-	}
-
-	/**
-	 * Method to get ${1/(.+)/\L\1/g} data for the current ${1/(.+)/\L\1/g}
+	 * Method to get ${2/(.+)/\L\1/g} data for the current ${2/(.+)/\L\1/g}
 	 *
 	 * @return  object
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
-	public function get${1/(.+)/\u\1/g}()
+	public function get${2/(.+)/\u\1/g}()
 	{
 		if (!is_object(\$this->_item))
 		{
@@ -237,7 +243,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 
 			\$options = array();
 			\$options['countItems'] = \$params->get('show_cat_items', 1) || \$params->get('show_empty_categories', 0);
-			\$categories = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}', \$options);
+			\$categories = JCategories::getInstance('${1/(.+)/\u\1/g}', \$options);
 			\$this->_item = \$categories->get(\$this->getState('category.id', 'root'));
 
 			if (is_object(\$this->_item))
@@ -262,17 +268,17 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	}
 
 	/**
-	 * Get the parent ${1/(.+)/\L\1/g}.
+	 * Get the parent ${2/(.+)/\L\1/g}.
 	 *
 	 * @return  mixed  An array of categories or false if an error occurs.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	public function getParent()
 	{
 		if (!is_object(\$this->_item))
 		{
-			\$this->get${1/(.+)/\u\1/g}();
+			\$this->get${2/(.+)/\u\1/g}();
 		}
 
 		return \$this->_parent;
@@ -283,13 +289,13 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	 *
 	 * @return  mixed  An array of categories or false if an error occurs.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	function &getLeftSibling()
 	{
 		if (!is_object(\$this->_item))
 		{
-			\$this->get${1/(.+)/\u\1/g}();
+			\$this->get${2/(.+)/\u\1/g}();
 		}
 
 		return \$this->_leftsibling;
@@ -300,13 +306,13 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	 *
 	 * @return  mixed  An array of categories or false if an error occurs.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	function &getRightSibling()
 	{
 		if (!is_object(\$this->_item))
 		{
-			\$this->get${1/(.+)/\u\1/g}();
+			\$this->get${2/(.+)/\u\1/g}();
 		}
 
 		return \$this->_rightsibling;
@@ -317,19 +323,27 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	 *
 	 * @return  mixed  An array of categories or false if an error occurs.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	function &getChildren()
 	{
 		if (!is_object(\$this->_item))
 		{
-			\$this->get${1/(.+)/\u\1/g}();
+			\$this->get${2/(.+)/\u\1/g}();
+		}
+
+		// Order subcategories
+		if (sizeof(\$this->_children)) {
+			\$params = \$this->getState()->get('params');
+			if (\$params->get('orderby_pri') == 'alpha' || \$params->get('orderby_pri') == 'ralpha') {
+				jimport('joomla.utilities.arrayhelper');
+				JArrayHelper::sortObjects(\$this->_children, 'title', (\$params->get('orderby_pri') == 'alpha') ? 1 : -1);
+			}
 		}
 
 		return \$this->_children;
 	}
 }
-
 ]]></content>
 	<tabTrigger>jsitemodelcategory</tabTrigger>
 </snippet>
