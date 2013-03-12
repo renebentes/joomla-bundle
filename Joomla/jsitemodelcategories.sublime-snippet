@@ -1,26 +1,26 @@
 <snippet>
 	<content><![CDATA[/**
- * This models supports retrieving lists of ${TM_PROJECT/(.+)(s\b)/\L\1/g} ${2/(.+)/\L\1/g}.
+ * This models supports retrieving lists of ${1:${TM_PROJECT/(.+)(s\b)/\L\1/g}} ${2/(.+)/\L\1/g}.
  *
- * @package     $TM_PROJECT
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @package     ${1/(.+)/\u\1/g}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ * @since       ${3:${TM_VERSION}}
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${2:Categories} extends JModelLegacy
+class ${1/(.+)/\u\1/g}Model${2:Categories} extends JModelLegacy
 {
 	/**
 	 * Model context string.
 	 *
 	 * @var     string
 	 */
-	public \$_context = 'com_${TM_PROJECT/(.+)/\L\1/g}.${2/(.+)/\L\1/g}';
+	public \$_context = 'com_${1/(.+)/\L\1/g}.${2/(.+)/\L\1/g}';
 
 	/**
 	 * The category context (allows other extensions to derived from this model).
 	 *
 	 * @var     string
 	 */
-	protected \$_extension = 'com_${TM_PROJECT/(.+)/\L\1/g}';
+	protected \$_extension = 'com_${1/(.+)/\L\1/g}';
 
 	private \$_parent = null;
 
@@ -33,7 +33,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${2:Categories} extends JModelLegacy
 	 *
 	 * @return  void
 	 *
-	 * @since	$TM_VERSION
+	 * @since	$3
 	 */
 	protected function populateState()
 	{
@@ -62,7 +62,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${2:Categories} extends JModelLegacy
 	 *
 	 * @return  string  A store id.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	protected function getStoreId(\$id = '')
 	{
@@ -80,7 +80,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${2:Categories} extends JModelLegacy
 	 *
 	 * @return  mixed  An array of data items on success, false on failure.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	public function getItems()
 	{
@@ -98,7 +98,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${2:Categories} extends JModelLegacy
 
 			\$options = array();
 			\$options['countItems'] = \$params->get('show_cat_items_cat', 1) || !\$params->get('show_empty_categories_cat', 0);
-			\$categories = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}', \$options);
+			\$categories = JCategories::getInstance('${1/(.+)/\u\1/g}', \$options);
 			\$this->_parent = \$categories->get(\$this->getState('filter.parentId', 'root'));
 
 			if (is_object(\$this->_parent))
@@ -119,7 +119,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${2:Categories} extends JModelLegacy
 	 *
 	 * @return  mixed  An array of items or false if an error occurs.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	public function getParent()
 	{
@@ -131,7 +131,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${2:Categories} extends JModelLegacy
 		return \$this->_parent;
 	}
 }
-
 ]]></content>
 	<tabTrigger>jsitemodelcategories</tabTrigger>
 </snippet>

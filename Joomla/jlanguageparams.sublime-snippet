@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[; ${1:${TM_PROJECT/(.+)/\u\1/g}} Params
+COM_${1/(.+)/\U\1/g}_FIELD_CONFIG_HITS_DESC="Permite a exibição do número de acessos dos ${2:hellos}"
+COM_${1/(.+)/\U\1/g}_NUMBER_CATEGORY_ITEMS_LABEL="# ${2/(.+)/\u\1/g} na Categoria."
+COM_${1/(.+)/\U\1/g}_NUMBER_CATEGORY_ITEMS_DESC="Se configurado como exibir, o número de ${2/(.+)/\L\1/g} da categoria será exibido."
+]]>
+	</content>
+	<tabTrigger>jlanguageparams</tabTrigger>
+</snippet>

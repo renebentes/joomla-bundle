@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[; ${1:${TM_PROJECT/(.+)/\u\1/g}} Fieldsets
-COM_${1/(.+)/\U\1/g}_FIELDSET_${2:HELLO}="$3"
+COM_${1/(.+)/\U\1/g}_FIELDSET_${2:HELLO}="${3:Últimos} ${4:hello} cadastrados."
 ]]></content>
 	<tabTrigger>jlanguagefieldset</tabTrigger>
 </snippet>
