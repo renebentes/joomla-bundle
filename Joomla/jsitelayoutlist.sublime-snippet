@@ -1,39 +1,49 @@
 <snippet>
-	<content><![CDATA[<div class="${1:${TM_PROJECT/(.+)/\L\1/g}}-${2:list}<?php echo \$this->pageclass_sfx; ?>">
-	<?php if (\$this->params->get('show_page_heading', 1)): ?>
-	<h1>
-		<?php echo \$this->escape(\$this->params->get('page_heading')); ?>
-	</h1>
-	<?php endif; ?>
+	<content><![CDATA[<table class="table table-bordered table-striped">
+<?php if (\$this->params->get('show_headings')) :?>
+	<thead>
+		<tr>
+			<th id="tableOrdering">
+				<?php  echo JHtml::_('grid.sort', 'COM_${1/(.+)/\U\1/g}_HEADING_${3:TITLE}', 'a.${1/(.+)/\L\1/g}', \$listDirn, \$listOrder) ; ?>
+			</th>
+		<?php if ($date = $this->params->get('list_show_date')) : ?>
+			<th id="tableOrdering2">
+			<?php if ($date == "created") : ?>
+				<?php echo JHtml::_('grid.sort', 'COM_${1/(.+)/\U\1/g}_HEADING_' . \$date . ' _DATE', 'a.created', \$listDirn, \$listOrder); ?>
+			<?php elseif (\$date == "modified") : ?>
+				<?php echo JHtml::_('grid.sort', 'COM_${1/(.+)/\U\1/g}_HEADING_' . \$date . ' _DATE', 'a.modified', \$listDirn, \$listOrder); ?>
+			<?php elseif (\$date == "published") : ?>
+				<?php echo JHtml::_('grid.sort', 'COM_${1/(.+)/\U\1/g}_HEADING_' . \$date . '_DATE', 'a.publish_up', \$listDirn, \$listOrder); ?>
+			<?php endif; ?>
+			</th>
+		<?php endif; ?>
 
-	<table class="table table-bordered table-striped">
-		<thead>
-			<tr>
-				<th class="title"><?php echo JText::_('COM_${1/(.+)/\U\1/g}_${3:FIELD}_LABEL'); ?></th>
-				<th><?php echo JText::_('COM_${1/(.+)/\U\1/g}_${3/(.+)/\U\1/g}_DESCRIPTION'); ?></th>
-			</tr>
-		</thead>
-		<tbody>
+		<?php if (\$this->params->get('list_show_author', 1)) : ?>
+			<th id="tableOrdering3">
+				<?php echo JHtml::_('grid.sort', 'JAUTHOR', 'author', \$listDirn, \$listOrder); ?>
+			</th>
+		<?php endif; ?>
+
+		<?php if (\$this->params->get('list_show_hits', 1)) : ?>
+			<th id="tableOrdering4">
+				<?php echo JHtml::_('grid.sort', 'JGLOBAL_HITS', 'a.hits', \$listDirn, \$listOrder); ?>
+			</th>
+		<?php endif; ?>
+		</tr>
+	</thead>
+<php>endif; </php>
+	<tbody>
 	<?php foreach (\$this->items as \$item): ?>
-			<tr>
-				<td><?php echo \$item->${3/(.+)/\L\1/g} ?></td>
-			</tr>
+		<tr>
+			<td><?php echo \$item->${3/(.+)/\L\1/g}; ?></td>
+		</tr>
+		<tr>
+			<td><?php echo \$this->escape(strip_tags(\$item->description)); ?></td>
+		</tr>
 	<?php endforeach ?>
-		</tbody>
+	</tbody>
 	</table>
-
-	<?php if (\$this->params->get('show_pagination')): ?>
-	<div class="pagination">
-	<?php if (\$this->params->def('show_pagination_results', 1)): ?>
-		<p class="counter">
-			<?php echo \$this->pagination->getPagesCounter(); ?>
-		</p>
-	<?php endif; ?>
-	<?php echo \$this->pagination->getPagesLinks(); ?>
-	</div>
-	<?php endif; ?>
 </div>
-
 ]]></content>
 	<tabTrigger>jsitelayoutlist</tabTrigger>
 </snippet>

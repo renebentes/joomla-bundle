@@ -1,33 +1,41 @@
 <snippet>
 	<content><![CDATA[<!-- Add params for list layout -->
 <fieldset name="list" label="JGLOBAL_LIST_LAYOUT_OPTIONS">
-	<field name="show_headings" type="list"
-		description="JGLOBAL_SHOW_HEADINGS_DESC"
-		label="JGLOBAL_SHOW_HEADINGS_LABEL">
+	<field name="show_headings" type="list" label="JGLOBAL_SHOW_HEADINGS_LABEL" description="JGLOBAL_SHOW_HEADINGS_DESC">
 		<option value="">JGLOBAL_USE_GLOBAL</option>
 		<option value="0">JHIDE</option>
 		<option value="1">JSHOW</option>
 	</field>
 
-	<field name="filter_field" type="list"
-		description="JGLOBAL_FILTER_FIELD_DESC"
-		label="JGLOBAL_FILTER_FIELD_LABEL">
+	<field name="filter_field" type="list" label="JGLOBAL_FILTER_FIELD_LABEL" description="JGLOBAL_FILTER_FIELD_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="hide">JHIDE</option>
+		<option value="title">JGLOBAL_TITLE</option>
+		<option value="author">JAUTHOR</option>
+		<option value="hits">JGLOBAL_HITS</option>
+	</field>
+
+	<field name="list_show_date" type="list" label="JGLOBAL_SHOW_DATE_LABEL" description="JGLOBAL_SHOW_DATE_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="0">JHIDE</option>
+		<option value="created">JGLOBAL_CREATED</option>
+		<option value="modified">JGLOBAL_MODIFIED</option>
+		<option value="published">JPUBLISHED</option>
+	</field>
+
+	<field name="list_show_author" type="list" label="JGLOBAL_LIST_AUTHOR_LABEL" description="JGLOBAL_LIST_AUTHOR_DESC">
 		<option value="">JGLOBAL_USE_GLOBAL</option>
 		<option value="0">JHIDE</option>
 		<option value="1">JSHOW</option>
 	</field>
 
-	<field name="show_link_hits" type="list"
-		description="COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_FIELD_CONFIG_HITS_DESC"
-		label="JGLOBAL_HITS">
+	<field name="show_link_hits" type="list" label="JGLOBAL_HITS" description="COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_FIELD_CONFIG_HITS_DESC">
 		<option value="">JGLOBAL_USE_GLOBAL</option>
 		<option value="0">JHIDE</option>
 		<option value="1">JSHOW</option>
 	</field>
 
-	<field name="display_num" type="list" default="10"
-		description="JGLOBAL_NUMBER_ITEMS_LIST_DESC"
-		label="JGLOBAL_NUMBER_ITEMS_LIST_LABEL">
+	<field name="display_num" type="list" default="10" label="JGLOBAL_NUMBER_ITEMS_LIST_LABEL" description="JGLOBAL_NUMBER_ITEMS_LIST_DESC">
 		<option value="5">J5</option>
 		<option value="10">J10</option>
 		<option value="15">J15</option>
@@ -39,26 +47,20 @@
 		<option value="0">JALL</option>
 	</field>
 
-	<field name="show_pagination_limit" type="list"
-		label="JGLOBAL_DISPLAY_SELECT_LABEL"
-		description="JGLOBAL_DISPLAY_SELECT_DESC">
+	<field name="show_pagination_limit" type="list" label="JGLOBAL_DISPLAY_SELECT_LABEL" description="JGLOBAL_DISPLAY_SELECT_DESC">
 		<option value="">JGLOBAL_USE_GLOBAL</option>
 		<option value="0">JHIDE</option>
 		<option value="1">JSHOW</option>
 	</field>
 
-	<field name="show_pagination" type="list"
-		description="JGLOBAL_PAGINATION_DESC"
-		label="JGLOBAL_PAGINATION_LABEL">
+	<field name="show_pagination" type="list" label="JGLOBAL_PAGINATION_LABEL" description="JGLOBAL_PAGINATION_DESC">
 		<option value="">JGLOBAL_USE_GLOBAL</option>
 		<option value="0">JHIDE</option>
 		<option value="1">JSHOW</option>
 		<option value="2">JGLOBAL_AUTO</option>
 	</field>
 
-	<field name="show_pagination_results" type="list"
-		label="JGLOBAL_PAGINATION_RESULTS_LABEL"
-		description="JGLOBAL_PAGINATION_RESULTS_DESC">
+	<field name="show_pagination_results" type="list" label="JGLOBAL_PAGINATION_RESULTS_LABEL" description="JGLOBAL_PAGINATION_RESULTS_DESC">
 		<option value="">JGLOBAL_USE_GLOBAL</option>
 		<option value="0">JHIDE</option>
 		<option value="1">JSHOW</option>

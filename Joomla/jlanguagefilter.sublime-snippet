@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[; ${1:${TM_PROJECT/(.+)/\u\1/g}} Filters
+COM_${1/(.+)/\U\1/g}_SEARCH_IN_${2:TITLE}="Pesquisar por ${3:Título}."
+COM_${1/(.+)/\U\1/g}_${4:TITLE}_FILTER_LABEL=" por ${3:Título}."
+COM_${1/(.+)/\U\1/g}_${4/(.+)/\U\1/g}_FILTER_DESC="Pesquisa através do ${3/(.+)/\u\1/g} ou Apelido. Caso queira, acrescente 'id:' (sem aspas) para pesquisar através do id."
+COM_${1/(.+)/\U\1/g}_${5:AUTHOR}_FILTER_LABEL=" por ${6:Autor}."
+COM_${1/(.+)/\U\1/g}_${5/(.+)/\U\1/g}_FILTER_DESC="Pesquisa através do ${6/(.+)/\u\1/g}."
+COM_${1/(.+)/\U\1/g}_${7:HITS}_FILTER_LABEL=" por ${8:Acessos}."
+COM_${1/(.+)/\U\1/g}_${7/(.+)/\U\1/g}_FILTER_DESC="Pesquisa através do número de ${8/(.+)/\u\1/g}."
+]]>
+	</content>
+	<tabTrigger>jlanguagefilter</tabTrigger>
+</snippet>

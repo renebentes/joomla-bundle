@@ -32,7 +32,13 @@
 			<option value="5">J5</option>
 		</field>
 
-		<field name="show_empty_categories" type="list" label="JGLOBAL_SHOW_EMPTY_CATEGORIES_LABEL" description="COM_CONTENT_SHOW_EMPTY_CATEGORIES_DESC">
+		<field name="show_empty_categories" type="list" label="JGLOBAL_SHOW_EMPTY_CATEGORIES_LABEL" description="JGLOBAL_SHOW_EMPTY_CATEGORIES_DESC">
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field name="show_no_results" type="list" label="COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_NO_RESULTS_LABEL" description="COM_${1/(.+)/\U\1/g}_NO_RESULTS_DESC">
 			<option value="">JGLOBAL_USE_GLOBAL</option>
 			<option value="0">JHIDE</option>
 			<option value="1">JSHOW</option>
@@ -44,7 +50,7 @@
 			<option value="1">JSHOW</option>
 		</field>
 
-		<field name="show_cat_num_articles" type="list" label="COM_${1/(.+)/\U\1/g}_NUMBER_CATEGORY_ITEMS_LABEL" description="COM_${1/(.+)/\U\1/g}_NUMBER_CATEGORY_ITEMS_DESC">
+		<field name="show_cat_num_items" type="list" label="COM_${1/(.+)/\U\1/g}_NUMBER_CATEGORY_ITEMS_LABEL" description="COM_${1/(.+)/\U\1/g}_NUMBER_CATEGORY_ITEMS_DESC">
 			<option value="">JGLOBAL_USE_GLOBAL</option>
 			<option value="0">JHIDE</option>
 			<option value="1">JSHOW</option>
@@ -52,6 +58,8 @@
 
 		<field name="page_subheading" type="text" label="JGLOBAL_SUBHEADING_LABEL" description="JGLOBAL_SUBHEADING_DESC" size="20" />
 	</fieldset>
-</fields>]]></content>
+</fields>
+]]>
+	</content>
 	<tabTrigger>jsiteviewmenuparams</tabTrigger>
 </snippet>
