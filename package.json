@@ -1,0 +1,20 @@
+{
+	"schema_version": "1.2",
+	"packages": [
+		{
+			"name": "Joomla Bundle",
+			"description": "Pacote com snippets Sublime Text 2 para Joomla! 2.5.",
+			"author": "Rene Bentes Pinto",
+			"homepage": "https://github.com/renebentes/joomla-bundle",
+			"last_modified": "2013-03-14 22:07:31",
+			"platforms": {
+				"*": [
+					{
+						"version": "1.0.0",
+						"url": "https://nodeload.github.com/renebentes/joomla-bundle/zipball/master"
+					}
+				]
+			}
+		}
+	]
+}

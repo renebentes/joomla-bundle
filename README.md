@@ -1,16 +1,29 @@
 Sublime Text 2 Bundle for Joomla! 2.5
 =====================================
 
-Snippets package for Sublime Text 2
+Pacote com snippets Sublime Text 2 para Joomla! 2.5.
 
-## Authors
+Autores
+-------
 
-* Bruno Batista
+## JoomlaPro joomla-bundle
 
-## License
+**Bruno Batista**
+
++ http://github.com/joomlapro
+
+## Rene joomla-bundle
+
+**Rene Bentes**
+
++ http://github.com/renebentes
+
+Copyright and License
+---------------------
 
 Licensed under the terms of the MIT license.
 
-## Bugs/Requests
+Bugs/Requests
+-------------
 
-* You can [report a bug or request a feature here](http://github.com/joomlapro/joomla-bundle/issues)
+* You can [report a bug or request a feature here](http://github.com/renebentes/joomla-bundle/issues)
