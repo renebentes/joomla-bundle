@@ -6,13 +6,13 @@ Pacote com snippets Sublime Text 2 para Joomla! 2.5.
 Autores
 -------
 
-## JoomlaPro joomla-bundle
+### JoomlaPro joomla-bundle
 
 **Bruno Batista**
 
 + http://github.com/joomlapro
 
-## Rene joomla-bundle
+### Rene joomla-bundle
 
 **Rene Bentes**
 
