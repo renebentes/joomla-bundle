@@ -8,24 +8,13 @@
  */
 function getPagination()
 {
-	// Get a storage key.
-	\$store = \$this->getStoreId('getPagination');
+	if(empty(\$this->_pagination)) :
+		require_once (JPATH_COMPONENT . DS . 'helpers' . DS . 'pagination.php');
+		\$limit = (int) \$this->getState('list.limit') - (int) \$this->getState('list.links');
+		\$this->_pagination = new ${2:${TM_PROJECT/(.+)/\u\1/g}}Pagination(\$this->getTotal(), \$this->getStart(), \$limit);
+	endif;
 
-	// Try to load the data from internal storage.
-	if (isset(\$this->cache[\$store]))
-	{
-		return \$this->cache[\$store];
-	}
-
-	// Create the pagination object.
-	require_once (JPATH_COMPONENT . DS . 'helpers' . DS . 'pagination.php');
-	\$limit = (int) \$this->getState('list.limit') - (int) \$this->getState('list.links');
-	\$page = new ${2:${TM_PROJECT/(.+)/\u\1/g}}Pagination(\$this->getTotal(), \$this->getStart(), \$limit);
-
-	// Add the object to the internal cache.
-	\$this->cache[\$store] = \$page;
-
-	return \$this->cache[\$store];
+	return \$this->_pagination;
 }
 ]]>
 	</content>

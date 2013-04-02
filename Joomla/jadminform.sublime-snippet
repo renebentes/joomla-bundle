@@ -2,7 +2,7 @@
 	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <form>
 	<fieldset name="details" addfieldpath="/administrator/components/com_${1:${TM_PROJECT/(.+)/\L\1/g}}/models/fields">
-		<field name="id" type="text" default="0" readonly="true" class="readonly" label="JGLOBAL_FIELD_ID_LABEL" description="JGLOBAL_FIELD_ID_DESC" />
+		<field name="id" type="text" default="0" readonly="true" class="readonly" label="COM_SERVICE_FIELD_ID_LABEL" description="COM_SERVICE_FIELD_ID_DESC" />
 		<field name="${2:title}" type="text" class="inputbox" size="40" required="true" label="COM_${1/(.+)/\U\1/g}_FIELD_${2/(.+)/\U\1/g}_LABEL" description="COM_${1/(.+)/\U\1/g}_FIELD_${2/(.+)/\U\1/g}_DESC" />
 		<field name="alias" type="text" class="inputbox" size="40" label="JFIELD_ALIAS_LABEL" description="JFIELD_ALIAS_DESC" />
 		<field name="catid" type="categoryedit" extension="com_${1/(.+)/\L\1/g}" class="inputbox" required="true" label="JCATEGORY" description="JFIELD_CATEGORY_DESC" addfieldpath="/administrator/components/com_categories/models/fields">
@@ -18,7 +18,7 @@
 		<field name="language" type="contentlanguage" class="inputbox" label="JFIELD_LANGUAGE_LABEL" description="JFIELD_LANGUAGE_DESC">
 			<option value="*">JALL</option>
 		</field>
-		<field name="description" type="editor" class="inputbox" filter="JComponentHelper::filterText" buttons="true" hide="readmore,pagebreak" label="JGLOBAL_DESCRIPTION" description="COM_${1/(.+)/\U\1/g}_FIELD_DESCRIPTION_DESC" />
+		<field name="description" type="editor" class="inputbox" filter="JComponentHelper::filterText" buttons="true" hide="readmore,pagebreak" label="COM_${1/(.+)/\U\1/g}_DESCRIPTION_LABEL" description="COM_${1/(.+)/\U\1/g}_FIELD_DESCRIPTION_DESC" />
 	</fieldset>
 
 	<fields name="publish">

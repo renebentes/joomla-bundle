@@ -3,12 +3,15 @@
 COM_${1/(.+)/\U\1/g}_${2:HELLO}_VIEW_DEFAULT_TITLE="$3"
 COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VIEW_DEFAULT_OPTION="${4:Padrão}"
 COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VIEW_DEFAULT_DESC="$5"
-COM_${1/(.+)/\U\1/g}_CATEGORY_VIEW_DEFAULT_TITLE="Lista de ${6:hello} por Categoria"
+COM_${1/(.+)/\U\1/g}_CATEGORY_VIEW_DEFAULT_TITLE="Lista de ${6:hellos} por Categoria"
 COM_${1/(.+)/\U\1/g}_CATEGORY_VIEW_DEFAULT_OPTION="$4"
 COM_${1/(.+)/\U\1/g}_CATEGORY_VIEW_DEFAULT_DESC="${7:Exibe uma lista de ${6/(.+)/\u\1/g} por Categoria especificada.}"
 COM_${1/(.+)/\U\1/g}_CATEGORIES_VIEW_DEFAULT_TITLE="Lista de Categorias"
 COM_${1/(.+)/\U\1/g}_CATEGORIES_VIEW_DEFAULT_OPTION="$4"
 COM_${1/(.+)/\U\1/g}_CATEGORIES_VIEW_DEFAULT_DESC="${8:Exibe uma lista de Categorias.}"
+COM_${1/(.+)/\U\1/g}_FORM_VIEW_DEFAULT_TITLE="Incluir ${9:Item}"
+COM_${1/(.+)/\U\1/g}_FORM_VIEW_DEFAULT_OPTION="$4"
+COM_${1/(.+)/\U\1/g}_FORM_VIEW_DEFAULT_DESC="Permite incluir um novo ${9/(.+)/\u\1/g}."
 ]]>
 	</content>
 	<tabTrigger>jlanguagemenu</tabTrigger>

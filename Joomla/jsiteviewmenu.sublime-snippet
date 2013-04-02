@@ -3,10 +3,11 @@
 <metadata>
 	<layout title="COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_${2:HELLO}_VIEW_DEFAULT_TITLE" option="COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VIEW_DEFAULT_OPTION">
 		<message>
-			\<![CDATA[COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VIEW_DEFAULT_DESC]]\>
+			<![CDATA[COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VIEW_DEFAULT_DESC]]${3:>}
 		</message>
 	</layout>
 </metadata>
-]]></content>
+]]>
+	</content>
 	<tabTrigger>jsiteviewmenu</tabTrigger>
 </snippet>

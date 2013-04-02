@@ -4,7 +4,7 @@ COM_${1/(.+)/\U\1/g}_NO_RESULTS_LABEL="Mensagem Sem Resultados"
 COM_${1/(.+)/\U\1/g}_NO_RESULTS_DESC="Se configurado como exibir, a mensagem 'Nenhum resultado encontrado.' será exibido quando não houver registros ou quando 'Categorias Vazias' estiver configurado para exibir."
 COM_${1/(.+)/\U\1/g}_NUMBER_CATEGORY_ITEMS_LABEL="Registros na Categoria"
 COM_${1/(.+)/\U\1/g}_NUMBER_CATEGORY_ITEMS_DESC="Se configurado como exibir, o número de registros da categoria será exibido."
-COM_${1/(.+)/\U\1/g}_FIELD_CONFIG_HITS_DESC="Se configurado como exibir, o número de acessos aos registros será exibido"
+COM_${1/(.+)/\U\1/g}_FIELD_CONFIG_HITS_DESC="Se configurado como exibir, o número de acessos aos registros será exibido."
 ]]>
 	</content>
 	<tabTrigger>jlanguageparams</tabTrigger>

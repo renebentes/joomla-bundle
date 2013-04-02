@@ -2,24 +2,24 @@
 	<content><![CDATA[jimport('joomla.application.component.controllerform');
 
 /**
- * ${1/(.+)/\u\1/g} Controller
+ * ${1:Hello} Controller
  *
- * @package     $TM_PROJECT
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @package     ${2:${TM_PROJECT/(.+)/\u\1/g}}
+ * @subpackage  com_${2/(.+)/\L\1/g}
+ * @since       ${3:${TM_VERSION}}
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
+class ${2/(.+)/\u\1/g}Controller${1/(.+)/\u\1/g} extends JControllerForm
 {
-	protected \$view_item = '${2:form}';
+	protected \$view_item = '${4:form}';
 
-	protected \$view_list = '${3:categories}';
+	protected \$view_list = '${5:categories}';
 
 	/**
 	 * Method to add a new record.
 	 *
 	 * @return  boolean  True if the article can be added, false if not.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	public function add()
 	{
@@ -37,7 +37,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 	 *
 	 * @return  boolean
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	protected function allowAdd(\$data = array())
 	{
@@ -71,29 +71,48 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 	 *
 	 * @return  boolean
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	protected function allowEdit(\$data = array(), \$key = 'id')
 	{
 		// Initialise variables.
 		\$recordId = (int) isset(\$data[\$key]) ? \$data[\$key] : 0;
-		\$categoryId = 0;
+		\$user	= JFactory::getUser();
+		\$userId	= \$user->get('id');
+		\$asset		= 'com_${2/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.'.\$recordId;
 
-		if (\$recordId)
+		// Check general edit permission first.
+		if (\$user->authorise('core.edit', \$asset))
 		{
-			\$categoryId = (int) \$this->getModel()->getItem(\$recordId)->catid;
+			return true;
 		}
 
-		if (\$categoryId)
+		// Fallback on edit.own.
+		// First test if the permission is available.
+		if (\$user->authorise('core.edit.own', \$asset))
 		{
-			// The category has been set. Check the category permissions.
-			return JFactory::getUser()->authorise('core.edit', \$this->option . '.category.' . \$categoryId);
-		}
-		else
-		{
-			// Since there is no asset tracking, revert to the component permissions.
-			return parent::allowEdit(\$data, \$key);
-		}
+			// Now test the owner is the user.
+			\$ownerId = (int) isset(\$data['created_by']) ? \$data['created_by'] : 0;
+			if (empty(\$ownerId) && \$recordId)
+			{
+				// Need to do a lookup from the model.
+				\$record = \$this->getModel()->getItem(\$recordId);
+
+				if (empty(\$record))
+				{
+					return false;
+				}
+
+				\$ownerId = \$record->created_by;
+			}
+
+			// If the owner matches 'me' then do the test.
+			if (\$ownerId == \$userId)
+			{
+				return true;
+			}
+		// Since there is no asset tracking, revert to the component permissions.
+		return parent::allowEdit(\$data, \$key);
 	}
 
 	/**
@@ -103,9 +122,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 	 *
 	 * @return  Boolean  True if access level checks pass, false otherwise.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
-	public function cancel(\$key = '${TM_PROJECT/(.)(.+)/\L\1/g}_id')
+	public function cancel(\$key = '${2/(.)(.+)/\L\1/g}_id')
 	{
 		parent::cancel(\$key);
 
@@ -121,9 +140,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 	 *
 	 * @return  Boolean	True if access level check and checkout passes, false otherwise.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
-	public function edit(\$key = null, \$urlVar = '${TM_PROJECT/(.)(.+)/\L\1/g}_id')
+	public function edit(\$key = null, \$urlVar = '${2/(.)(.+)/\L\1/g}_id')
 	{
 		\$result = parent::edit(\$key, \$urlVar);
 
@@ -139,9 +158,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 	 *
 	 * @return  object  The model.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
-	public function getModel(\$name = '${2/(.+)/\u\1/g}', \$prefix = '', \$config = array('ignore_request' => true))
+	public function getModel(\$name = '${4/(.+)/\u\1/g}', \$prefix = '', \$config = array('ignore_request' => true))
 	{
 		\$model = parent::getModel(\$name, \$prefix, \$config);
 
@@ -156,7 +175,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 	 *
 	 * @return  string  The arguments to append to the redirect URL.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	protected function getRedirectToItemAppend(\$recordId = null, \$urlVar = null)
 	{
@@ -184,7 +203,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 	 *
 	 * @return  string  The return URL.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	protected function getReturnPage()
 	{
@@ -208,7 +227,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 	 *
 	 * @return  void
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	protected function postSaveHook(JModel &\$model, \$validData = array())
 	{
@@ -216,7 +235,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 
 		if (\$task == 'save')
 		{
-			\$this->setRedirect(JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=category&id=' . \$validData['catid'], false));
+			\$this->setRedirect(JRoute::_('index.php?option=com_${2/(.+)/\L\1/g}&view=category&id=' . \$validData['catid'], false));
 		}
 	}
 
@@ -228,9 +247,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 	 *
 	 * @return  Boolean  True if successful, false otherwise.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
-	public function save(\$key = null, \$urlVar = '${TM_PROJECT/(.)(.+)/\L\1/g}_id')
+	public function save(\$key = null, \$urlVar = '${2/(.)(.+)/\L\1/g}_id')
 	{
 		\$result = parent::save(\$key, \$urlVar);
 
@@ -243,7 +262,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hello} extends JControllerForm
 		return \$result;
 	}
 }
-
-]]></content>
+]]>
+	</content>
 	<tabTrigger>jsitecontrollerform</tabTrigger>
 </snippet>

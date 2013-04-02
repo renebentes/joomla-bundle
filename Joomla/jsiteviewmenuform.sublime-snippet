@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[<!-- Add fields to the parameters object for the layout. -->
+<fields name="params">
+	<!-- Basic options. -->
+	<fieldset name="basic">
+		<field name="enable_category" type="radio" default="0" label="COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_CREATE_${2:HELLO}_CATEGORY_LABEL" description="COM_${1/(.+)/\U\1/g}_CREATE_${2/(.+)/\U\1/g}_CATEGORY_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="catid" type="category" extension="com_${1/(.+)/\L\1/g}" label="JGLOBAL_CHOOSE_CATEGORY_LABEL" description="JGLOBAL_CHOOSE_CATEGORY_DESC" />
+		</fieldset>
+</fields>
+]]>
+	</content>
+	<tabTrigger>jsiteviewmenuform</tabTrigger>
+</snippet>

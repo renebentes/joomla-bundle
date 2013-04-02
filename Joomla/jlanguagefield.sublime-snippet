@@ -1,7 +1,13 @@
 <snippet>
 	<content><![CDATA[; ${1:${TM_PROJECT/(.+)/\u\1/g}} Fields
-COM_${1/(.+)/\U\1/g}_FIELD_${2:HELLO}_LABEL="$3"
-COM_${1/(.+)/\U\1/g}_FIELD_${2/(.+)/\U\1/g}_DESC="$4"
+COM_${1/(.+)/\U\1/g}_FIELD_ID_LABEL="${2:ID}"
+COM_${1/(.+)/\U\1/g}_FIELD_ID_DESC="Número identificador de registro no Banco de Dados. Gerado automaticamente."
+COM_${1/(.+)/\U\1/g}_FIELD_${3:TITLE}_LABEL="${4:Título}"
+COM_${1/(.+)/\U\1/g}_FIELD_${3/(.+)/\U\1/g}_DESC="${5:Identificação para o registro.}"
+COM_${1/(.+)/\U\1/g}_FIELD_DESCRIPTION_LABEL="Descrição do ${6:registro}"
+COM_${1/(.+)/\U\1/g}_FIELD_DESCRIPTION_DESC="Descrição detalhada do ${6/(.+)/\L\1/g}"
+COM_${1/(.+)/\U\1/g}_FIELD_${7:HELLO}_LABEL="$8"
+COM_${1/(.+)/\U\1/g}_FIELD_${7/(.+)/\U\1/g}_DESC="$9"
 ]]></content>
 	<tabTrigger>jlanguagefield</tabTrigger>
 </snippet>

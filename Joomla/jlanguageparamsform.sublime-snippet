@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_CREATE_${2:HELLO}_CATEGORY_LABEL="Categoria Padrão"
+COM_${1/(.+)/\u\1/g}_CREATE_${2/(.+)/\U\1/g}_CATEGORY_DESC="Se definido como 'Sim', esta página permitirá a você criar ${3:Hellos} na Categoria selecionada abaixo."
+]]>
+	</content>
+	<tabTrigger>jlanguageparamsform</tabTrigger>
+</snippet>

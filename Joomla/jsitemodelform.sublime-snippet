@@ -1,21 +1,21 @@
 <snippet>
-	<content><![CDATA[require_once JPATH_COMPONENT_ADMINISTRATOR . '/models/${2/(.+)/\L\1/g}.php';
+	<content><![CDATA[require_once JPATH_COMPONENT_ADMINISTRATOR . '/models/${4/(.+)/\L\1/g}.php';
 
 /**
- * ${1/(.+)/\u\1/g} model.
+ * ${1:Form} model.
  *
- * @package     $TM_PROJECT
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @package     ${2:${TM_PROJECT/(.+)/\u\1/g}}
+ * @subpackage  com_${2/(.+)/\L\1/g}
+ * @since       ${3:${TM_VERSION}}
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}Model${2:Hello}
+class ${2/(.+)/\u\1/g}Model${1/(.+)/\u\1/g} extends ${2/(.+)/\u\1/g}Model${4:Hello}
 {
 	/**
 	 * Get the return URL.
 	 *
 	 * @return  string  The return URL.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	public function getReturnPage()
 	{
@@ -29,7 +29,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 	 *
 	 * @return  void
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	protected function populateState()
 	{
@@ -37,13 +37,13 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 
 		// Load state from the request.
 		\$pk = JRequest::getInt('${1/(.)(.+)/\L\1/g}_id');
-		\$this->setState('${2/(.+)/\L\1/g}.id', \$pk);
+		\$this->setState('${4/(.+)/\L\1/g}.id', \$pk);
 
 		// Add compatibility variable for default naming conventions.
 		\$this->setState('${1/(.+)/\L\1/g}.id', \$pk);
 
 		\$categoryId = JRequest::getInt('catid');
-		\$this->setState('${2/(.+)/\L\1/g}.catid', \$categoryId);
+		\$this->setState('${4/(.+)/\L\1/g}.catid', \$categoryId);
 
 		\$return = JRequest::getVar('return', null, 'default', 'base64');
 
@@ -61,7 +61,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 		\$this->setState('layout', JRequest::getCmd('layout'));
 	}
 }
-
-]]></content>
+]]>
+	</content>
 	<tabTrigger>jsitemodelform</tabTrigger>
 </snippet>

@@ -1,6 +1,9 @@
 <snippet>
-	<content><![CDATA[; ${2:${TM_PROJECT/(.+)/\u\1/g}} Headings
-${1:COM}_${2/(.+)/\U\1/g}_HEADING_${3:HELLO}="$4"
+	<content><![CDATA[; ${1:${TM_PROJECT/(.+)/\u\1/g}} Headings
+${2:COM}_${3/(.+)/\U\1/g}_HEADING_ID="$4"
+${2:COM}_${3/(.+)/\U\1/g}_HEADING_${5:TITLE}="$6"
+${2/(.+)/\U\1/g}_${3/(.+)/\U\1/g}_HEADING_DESCRIPTION="$7"
+${2/(.+)/\U\1/g}_${3/(.+)/\U\1/g}_HEADING_${8:HELLO}="$9"
 ]]></content>
 	<tabTrigger>jlanguageheading</tabTrigger>
 </snippet>

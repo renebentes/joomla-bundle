@@ -22,9 +22,6 @@ JHtml::_('behavior.framework');
 \$listOrder = \$this->escape(\$this->state->get('list.ordering'));
 \$listDirn = \$this->escape(\$this->state->get('list.direction'));
 ?>
-<?php if (empty(\$this->items) && \$this->params->get('show_no_articles', 1)): ?>
-<p><?php echo JText::_('COM_${1/(.+)/\U\1/g}_NO_RESULTS'); ?></p>
-<?php else: ?>
 <form action="<?php echo htmlspecialchars(JFactory::getURI()->toString()); ?>" method="post" name="adminForm" id="adminForm" class="form-inline">
 	<?php if (\$this->params->get('show_pagination_limit') || \$this->params->get('filter_field') != 'hide'): ?>
 	<fieldset class="well well-small">
@@ -47,10 +44,12 @@ JHtml::_('behavior.framework');
 		<input type="hidden" name="limitstart" value="" />
 	</fieldset>
 	<?php endif; ?>
-
+	<?php if (empty(\$this->items) && \$this->params->get('show_no_articles', 1)): ?>
+	<p><?php echo JText::_('COM_${1/(.+)/\U\1/g}_NO_RESULTS'); ?></p>
+<?php else: ?>
 	<?php var_dump(\$this->items); ?>
-</form>
 <?php endif;
+</form>
 ]]></content>
 	<tabTrigger>jsitelayoutcategory_items</tabTrigger>
 </snippet>

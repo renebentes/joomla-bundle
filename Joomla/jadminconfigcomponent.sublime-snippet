@@ -1,6 +1,8 @@
 <snippet>
 	<content><![CDATA[<fieldset name="component" label="COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_COMPONENT_LABEL" description="COM_${1/(.+)/\U\1/g}_COMPONENT_DESC">
 
-</fieldset>]]></content>
+</fieldset>
+]]>
+	</content>
 	<tabTrigger>jadminconfigcomponent</tabTrigger>
 </snippet>

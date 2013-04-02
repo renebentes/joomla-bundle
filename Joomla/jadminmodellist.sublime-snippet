@@ -224,7 +224,8 @@ class ${2/(.+)/\u\1/g}Model${1/(.+)/\u\1/g} extends JModelList
 		// echo nl2br(str_replace('#__', 'jos_', \$query));
 		return \$query;
 	}
-}]]>
+}
+]]>
 	</content>
 	<tabTrigger>jadminmodellist</tabTrigger>
 </snippet>

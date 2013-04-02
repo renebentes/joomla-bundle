@@ -226,7 +226,7 @@ class ${1/(.+)/\u\1/g}Model${2/(.+)/\u\1/g} extends JModelList
 		\$this->setState('params', \$params);
 	}
 }
-
-]]></content>
+]]>
+	</content>
 	<tabTrigger>jsitemodellist</tabTrigger>
 </snippet>
