@@ -150,12 +150,12 @@ class ${2/(.+)/\u\1/g}View${1:Category} extends JViewLegacy
 
 		\$id = (int) @\$menu->query['id'];
 
-		if (\$menu && (\$menu->query['option'] != 'com_${2/(.+)/\L\1/g}' || \$menu->query['view'] == '${2:hello}' || \$id != \$this->category->id))
+		if (\$menu && (\$menu->query['option'] != 'com_${2/(.+)/\L\1/g}' || \$menu->query['view'] == '${4:hello}' || \$id != \$this->category->id))
 		{
 			\$path = array(array('title' => \$this->category->title, 'link' => ''));
 			\$category = \$this->category->getParent();
 
-			while ((\$menu->query['option'] != 'com_${2/(.+)/\L\1/g}' || \$menu->query['view'] == '${2/(.+)/\L\1/g}' || \$id != \$category->id) && \$category->id > 1)
+			while ((\$menu->query['option'] != 'com_${2/(.+)/\L\1/g}' || \$menu->query['view'] == '${4/(.+)/\L\1/g}' || \$id != \$category->id) && \$category->id > 1)
 			{
 				\$path[] = array('title' => \$category->title, 'link' => ${2/(.+)/\u\1/g}HelperRoute::getCategoryRoute(\$category->id));
 				\$category = \$category->getParent();

@@ -1,0 +1,25 @@
+<snippet>
+	<content><![CDATA[$doc->addScript('http://code.jquery.com/jquery-${1:1.9.1}.min.js');
+?>
+<script type="text/javascript">
+	if (jQuery && jQuery.noConflict)
+		jQuery.noConflict();
+
+	Joomla.submitbutton = function(task) {
+		if (task == '${2:viewlist}.printlist') {
+			arrID = jQuery("[id*=cb]:checked");
+			if (arrID.length != 0) {
+				cid = new Array();
+				jQuery.each(arrID, function() {
+					cid.push(this.value);
+				});
+				jQuery("[id=print]").attr('href', '<?php echo JURI::base() . "index.php?option=com_${1:${TM_PROJECT/(.+)/\L\1/g}}&view=$2&layout=modal&tmpl=component&print=1&filter_search=id:";?>' + cid);
+			}
+		}
+		else
+			submitform(task);
+	}
+</script>
+]]></content>
+	<tabTrigger>jadmintaskprintlist</tabTrigger>
+</snippet>

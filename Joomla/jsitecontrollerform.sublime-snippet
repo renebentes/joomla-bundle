@@ -111,6 +111,8 @@ class ${2/(.+)/\u\1/g}Controller${1/(.+)/\u\1/g} extends JControllerForm
 			{
 				return true;
 			}
+		}
+
 		// Since there is no asset tracking, revert to the component permissions.
 		return parent::allowEdit(\$data, \$key);
 	}
