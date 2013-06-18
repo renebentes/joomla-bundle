@@ -1,0 +1,62 @@
+<snippet>
+	<content><![CDATA[<fieldset name="list_parameters" label="JGLOBAL_LIST_LAYOUT_OPTIONS" description="COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_LIST_SETTINGS_DESC">
+	<field name="show_headings" type="radio" label="JGLOBAL_SHOW_HEADINGS_LABEL" description="JGLOBAL_SHOW_HEADINGS_DESC" default="1">
+		<option value="0">JHIDE</option>
+		<option value="1">JSHOW</option>
+	</field>
+
+	<field name="filter_field" type="radio" label="JGLOBAL_FILTER_FIELD_LABEL" description="JGLOBAL_FILTER_FIELD_DESC" default="title">
+		<option value="hide">JHIDE</option>
+		<option value="title">JGLOBAL_TITLE</option>
+		<option value="author">JAUTHOR</option>
+		<option value="hits">JGLOBAL_HITS</option>
+	</field>
+
+	<field name="list_show_date" type="radio" label="JGLOBAL_SHOW_DATE_LABEL" description="JGLOBAL_SHOW_DATE_DESC" default="created">
+		<option value="hide">JHIDE</option>
+		<option value="created">JGLOBAL_CREATED</option>
+		<option value="modified">JGLOBAL_MODIFIED</option>
+		<option value="published">JPUBLISHED</option>
+	</field>
+
+	<field name="list_show_author" type="radio" label="JGLOBAL_LIST_AUTHOR_LABEL" description="JGLOBAL_LIST_AUTHOR_DESC" default="1">
+		<option value="0">JHIDE</option>
+		<option value="1">JSHOW</option>
+	</field>
+
+	<field name="list_show_hits" type="radio" label="JGLOBAL_HITS" description="COM_${1/(.+)/\U\1/g}_SHOW_HITS_DESC" default="1">
+		<option value="0">JHIDE</option>
+		<option value="1">JSHOW</option>
+	</field>
+
+	<field name="display_num" type="list" label="COM_${1/(.+)/\U\1/g}_NUMBER_ITEMS_LIST_LABEL" description="COM_${1/(.+)/\U\1/g}_NUMBER_ITEMS_LIST_DESC" default="20">
+		<option value="5">J5</option>
+		<option value="10">J10</option>
+		<option value="15">J15</option>
+		<option value="20">J20</option>
+		<option value="25">J25</option>
+		<option value="30">J30</option>
+		<option value="50">J50</option>
+		<option value="100">J100</option>
+		<option value="0">JALL</option>
+	</field>
+
+	<field name="show_pagination_limit" type="radio" label="JGLOBAL_DISPLAY_SELECT_LABEL" description="JGLOBAL_DISPLAY_SELECT_DESC" default="1">
+		<option value="0">JHIDE</option>
+		<option value="1">JSHOW</option>
+	</field>
+
+	<field name="show_pagination" type="radio" label="JGLOBAL_PAGINATION_LABEL" description="COM_${1/(.+)/\U\1/g}_PAGINATION_DESC" default="1">
+		<option value="0">JHIDE</option>
+		<option value="1">JSHOW</option>
+		<option value="2">JGLOBAL_AUTO</option>
+	</field>
+
+	<field name="show_pagination_results" type="radio" label="JGLOBAL_PAGINATION_RESULTS_LABEL" description="JGLOBAL_PAGINATION_RESULTS_DESC" default="1">
+		<option value="0">JHIDE</option>
+		<option value="1">JSHOW</option>
+	</field>
+</fieldset>
+]]></content>
+	<tabTrigger>jadminconfiglist</tabTrigger>
+</snippet>

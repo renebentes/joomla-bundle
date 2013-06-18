@@ -1,6 +1,5 @@
 <snippet>
-	<content><![CDATA[<!-- Add params for list layout -->
-<fieldset name="list" label="JGLOBAL_LIST_LAYOUT_OPTIONS">
+	<content><![CDATA[<fieldset name="list" label="JGLOBAL_LIST_LAYOUT_OPTIONS">
 	<field name="show_headings" type="list" label="JGLOBAL_SHOW_HEADINGS_LABEL" description="JGLOBAL_SHOW_HEADINGS_DESC">
 		<option value="">JGLOBAL_USE_GLOBAL</option>
 		<option value="0">JHIDE</option>
@@ -17,7 +16,7 @@
 
 	<field name="list_show_date" type="list" label="JGLOBAL_SHOW_DATE_LABEL" description="JGLOBAL_SHOW_DATE_DESC">
 		<option value="">JGLOBAL_USE_GLOBAL</option>
-		<option value="0">JHIDE</option>
+		<option value="hide">JHIDE</option>
 		<option value="created">JGLOBAL_CREATED</option>
 		<option value="modified">JGLOBAL_MODIFIED</option>
 		<option value="published">JPUBLISHED</option>
@@ -53,7 +52,7 @@
 		<option value="1">JSHOW</option>
 	</field>
 
-	<field name="show_pagination" type="list" label="JGLOBAL_PAGINATION_LABEL" description="JGLOBAL_PAGINATION_DESC">
+	<field name="show_pagination" type="list" label="JGLOBAL_PAGINATION_LABEL" description="COM_${1/(.+)/\U\1/g}_PAGINATION_DESC">
 		<option value="">JGLOBAL_USE_GLOBAL</option>
 		<option value="0">JHIDE</option>
 		<option value="1">JSHOW</option>

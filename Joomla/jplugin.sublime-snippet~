@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[/**
- * ${1:Hello} ${2:Folder} plugin
+ * ${1:Hello} ${1:Folder} plugin
  *
  * @package     ${3:${TM_PROJECT/(.+)/\u\1/g}}
  * @subpackage  plg_${2/(.+)/\L\1/g}_${1/(.+)/\L\1/g}

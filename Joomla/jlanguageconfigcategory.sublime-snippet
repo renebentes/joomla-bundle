@@ -1,12 +1,11 @@
 <snippet>
-	<content><![CDATA[; ${1:${TM_PROJECT/(.+)/\u\1/g}} Params
+	<content><![CDATA[; ${1:${TM_PROJECT/(.+)/\u\1/g}} Config Category
+COM_${1/(.+)/\U\1/g}_CATEGORY_SETTINGS_LABEL="Layout de Categoria"
 COM_${1/(.+)/\U\1/g}_CATEGORY_SETTINGS_DESC="Essas opções se aplicam às opções de uma categoria, exceto se forem alterados para uma configuração de menu ou categoria específica."
 COM_${1/(.+)/\U\1/g}_NO_RESULTS_LABEL="Mensagem Sem Resultados"
 COM_${1/(.+)/\U\1/g}_NO_RESULTS_DESC="Se configurado como exibir, a mensagem 'Nenhum resultado encontrado.' será exibido quando não houver registros ou quando 'Categorias Vazias' estiver configurado para exibir."
 COM_${1/(.+)/\U\1/g}_NUMBER_CATEGORY_ITEMS_LABEL="Registros na Categoria"
 COM_${1/(.+)/\U\1/g}_NUMBER_CATEGORY_ITEMS_DESC="Se configurado como exibir, o número de registros da categoria será exibido."
-COM_${1/(.+)/\U\1/g}_FIELD_CONFIG_HITS_DESC="Se configurado como exibir, o número de acessos aos registros será exibido."
-]]>
-	</content>
-	<tabTrigger>jlanguageparams</tabTrigger>
+]]></content>
+	<tabTrigger>jlanguageconfigcategory</tabTrigger>
 </snippet>

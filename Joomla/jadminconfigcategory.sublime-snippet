@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<fieldset name="category" label="JCATEGORY" description="COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_CATEGORY_SETTINGS_DESC">
+	<content><![CDATA[<fieldset name="category" label="COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_CATEGORY_SETTINGS_LABEL" description="COM_${1:/(.+)/\U\1/g}_CATEGORY_SETTINGS_DESC">
 	<field name="show_category_title" type="radio" label="JGLOBAL_SHOW_CATEGORY_TITLE" description="JGLOBAL_SHOW_CATEGORY_TITLE_DESC" default="1">
 		<option value="0">JHIDE</option>
 		<option value="1">JSHOW</option>

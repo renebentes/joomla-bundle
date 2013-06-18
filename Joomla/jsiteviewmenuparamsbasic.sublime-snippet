@@ -1,0 +1,83 @@
+<snippet>
+	<content><![CDATA[<fieldset name="basic" label="COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_${2:ITEMS}_SETTINGS_LABEL" description="COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_SETTINGS_DESC">
+	<field name="show_category" type="list" label="JGLOBAL_SHOW_CATEGORY_LABEL" description="COM_${1/(.+)/\U\1/g}_SHOW_CATEGORY_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="0">JHIDE</option>
+		<option value="1">JSHOW</option>
+	</field>
+
+	<field name="link_category" type="list" label="JGLOBAL_LINK_CATEGORY_LABEL" description="COM_${1/(.+)/\U\1/g}_LINK_CATEGORY_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="0">JNO</option>
+		<option value="1">JYES</option>
+	</field>
+
+	<field name="show_parent_category" type="list" label="JGLOBAL_SHOW_PARENT_CATEGORY_LABEL" description="COM_${1/(.+)/\U\1/g}_SHOW_PARENT_CATEGORY_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="0">JHIDE</option>
+		<option value="1">JSHOW</option>
+	</field>
+
+	<field name="link_parent_category" type="list" label="JGLOBAL_LINK_PARENT_CATEGORY_LABEL" description="COM_${1/(.+)/\U\1/g}_LINK_PARENT_CATEGORY_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="0">JNO</option>
+		<option value="1">JYES</option>
+	</field>
+
+	<field name="show_author" type="list" label="JGLOBAL_SHOW_AUTHOR_LABEL" description="COM_${1/(.+)/\U\1/g}_SHOW_AUTHOR_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="0">JHIDE</option>
+		<option value="1">JSHOW</option>
+	</field>
+
+	<field name="link_author" type="list" label="JGLOBAL_LINK_AUTHOR_LABEL" description="COM_${1/(.+)/\U\1/g}_LINK_AUTHOR_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="0">JNO</option>
+		<option value="1">JYES</option>
+	</field>
+
+	<field name="show_create_date" type="list" label="JGLOBAL_SHOW_CREATE_DATE_LABEL" description="COM_${1/(.+)/\U\1/g}_SHOW_CREATE_DATE_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="0">JHIDE</option>
+		<option value="1">JSHOW</option>
+	</field>
+
+	<field name="show_modify_date" type="list" label="JGLOBAL_SHOW_MODIFY_DATE_LABEL" description="COM_${1/(.+)/\U\1/g}_SHOW_MODIFY_DATE_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="0">JHIDE</option>
+		<option value="1">JSHOW</option>
+	</field>
+
+	<field name="show_publish_date" type="list" label="JGLOBAL_SHOW_PUBLISH_DATE_LABEL" description="COM_${1/(.+)/\U\1/g}_SHOW_PUBLISH_DATE_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="0">JHIDE</option>
+		<option value="1">JSHOW</option>
+	</field>
+
+	<field name="show_icons" type="list" label="JGLOBAL_SHOW_ICONS_LABEL" description="COM_${1/(.+)/\U\1/g}_SHOW_ICONS_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="0">JHIDE</option>
+		<option value="1">JSHOW</option>
+	</field>
+
+	<field name="show_print_icon" type="list" label="JGLOBAL_SHOW_PRINT_ICON_LABEL" description="COM_${1/(.+)/\U\1/g}_SHOW_PRINT_ICON_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="0">JHIDE</option>
+		<option value="1">JSHOW</option>
+	</field>
+
+	<field name="show_email_icon" type="list" label="JGLOBAL_SHOW_EMAIL_ICON_LABEL" description="COM_${1/(.+)/\U\1/g}_SHOW_EMAIL_ICON_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="0">JHIDE</option>
+		<option value="1">JSHOW</option>
+	</field>
+
+	<field name="show_hits" type="list" label="JGLOBAL_SHOW_HITS_LABEL" description="COM_${1/(.+)/\U\1/g}_SHOW_HITS_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="0">JHIDE</option>
+		<option value="1">JSHOW</option>
+	</field>
+</fieldset>
+]]></content>
+	<tabTrigger>jsiteviewmenuparamsbasic</tabTrigger>
+</snippet>

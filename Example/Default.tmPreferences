@@ -14,19 +14,19 @@
 				<key>name</key>
 				<string>TM_FULLNAME</string>
 				<key>value</key>
-				<string><![CDATA[Bruno Batista]]></string>
+				<string><![CDATA[Rene Bentes Pinto]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
 				<string>TM_EMAIL</string>
 				<key>value</key>
-				<string><![CDATA[bruno@atomtech.com.br]]></string>
+				<string><![CDATA[renebentes@yahoo.com.br]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
 				<string>TM_ORGANIZATION_NAME</string>
 				<key>value</key>
-				<string><![CDATA[AtomTech, Inc]]></string>
+				<string><![CDATA[Rene Bentes Pinto, Inc]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -38,19 +38,19 @@
 				<key>name</key>
 				<string>TM_WEBSITE</string>
 				<key>value</key>
-				<string><![CDATA[atomtech.com.br]]></string>
+				<string><![CDATA[]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
 				<string>TM_PROJECT</string>
 				<key>value</key>
-				<string><![CDATA[Payments]]></string>
+				<string><![CDATA[Project]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
 				<string>TM_TEMPLATE</string>
 				<key>value</key>
-				<string><![CDATA[Hotsite]]></string>
+				<string><![CDATA[Template]]></string>
 			</dict>
 			<dict>
 				<key>name</key>

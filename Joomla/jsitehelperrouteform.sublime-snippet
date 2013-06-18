@@ -1,28 +1,27 @@
 <snippet>
 	<content><![CDATA[/**
- * Get the ${1/(.+)/\L\1/g} route
+ * Get the ${1:Form} route
  *
  * @param   int  \$id  The id of the ${1/(.+)/\L\1/g}.
  *
  * @return  string
  *
- * @since   $TM_VERSION
+ * @since   ${2:${TM_VERSION}}
  */
-public static function get${1:Form}Route(\$id)
+public static function getRoute${1/(.+)/\L\1/g}(\$id)
 {
 	// Create the link
 	if (\$id)
 	{
-		\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${2:hello}.edit&${1/(.)(.+)/\L\1/g}_id=' . \$id;
+		\$link = 'index.php?option=com_${3:${TM_PROJECT/(.+)/\L\1/g}}&task=${4:hello}.edit&${1/(.)(.+)/\L\1/g}_id=' . \$id;
 	}
 	else
 	{
-		\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${2/(.+)/\L\1/g}.edit&${1/(.)(.+)/\L\1/g}_id=0';
+		\$link = 'index.php?option=com_${3/(.+)/\L\1/g}&task=${4/(.+)/\L\1/g}.edit&${1/(.)(.+)/\L\1/g}_id=0';
 	}
 
 	return \$link;
 }
-
 ]]></content>
 	<tabTrigger>jsitehelperrouteform</tabTrigger>
 </snippet>

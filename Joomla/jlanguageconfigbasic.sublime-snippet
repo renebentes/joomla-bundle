@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[; ${1:${TM_PROJECT/(.+)/\u\1/g}} Config Basic
+COM_${1/(.+)/\U\1/g}_${2:VIEW_NAME}_SETTINGS_LABEL="Layout de ${3:Itens}"
+COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_SETTINGS_DESC="Estas configurações se aplicam aos layouts de ${3/(.+)/\L\1/g}, a não ser que tenham sido alterados por um item de menu."
+COM_${1/(.+)/\U\1/g}_SHOW_CATEGORY_DESC="Se definido como exibir, o título da categoria do item será exibido em seus detalhes."
+COM_${1/(.+)/\U\1/g}_LINK_CATEGORY_DESC="Se definido como sim e, se exibir categoria estiver ativado, o título da categoria será vinculado a um esquema que exibirá os itens nesta categoria."
+COM_${1/(.+)/\U\1/g}_SHOW_PARENT_CATEGORY_DESC="Se definido como exibir, o título da categoria pai do item será exibido em seus detalhes."
+COM_${1/(.+)/\U\1/g}_LINK_PARENT_CATEGORY_DESC="Se definido como sim e, se exibir categoria pai estiver ativado, o título da categoria será vinculado a um esquema que exibirá os itens nesta categoria."
+COM_${1/(.+)/\U\1/g}_SHOW_AUTHOR_DESC="Se definido como exibir, o nome do autor do item será exibido em seus detalhes."
+COM_${1/(.+)/\U\1/g}_LINK_AUTHOR_DESC="Se definido como sim e, se exibir autor estiver ativado, o nome do autor será vinculado ao seu perfil de usuário. Obs.: Você deve criar um link do contato para o registro do autor para que isto tenha efeito."
+COM_${1/(.+)/\U\1/g}_SHOW_CREATE_DATE_DESC="Se definido como exibir, a data e a hora de criação do item será exibida em seus detalhes."
+COM_${1/(.+)/\U\1/g}_SHOW_MODIFY_DATE_DESC="Se definido como exibir, a data e a hora da última atualização do item será exibida em seus detalhes."
+COM_${1/(.+)/\U\1/g}_SHOW_PUBLISH_DATE_DESC="Se definido como exibir, a data e a hora de publicação do item será exibida em seus detalhes."
+COM_${1/(.+)/\U\1/g}_SHOW_ICONS_DESC="Se definido como exibir, permite a exibição de ícones para as funções de impressão e envio de e-mail. Caso contrário, será exibido apenas texto."
+COM_${1/(.+)/\U\1/g}_SHOW_PRINT_ICON_DESC="Exibir/ocultar botão de impressão."
+COM_${1/(.+)/\U\1/g}_SHOW_EMAIL_ICON_DESC="Exibir/ocultar botão de envio de e-mail."
+COM_${1/(.+)/\U\1/g}_SHOW_HITS_DESC="Se definido como exibir, o número de acessos ao item será exibido."
+]]></content>
+	<tabTrigger>jlanguageconfigbasic</tabTrigger>
+</snippet>

@@ -1,0 +1,66 @@
+<snippet>
+	<content><![CDATA[<fieldset name="category" label="JGLOBAL_CATEGORY_OPTIONS">
+		<field name="show_category_title" type="list" label="JGLOBAL_SHOW_CATEGORY_TITLE" description="JGLOBAL_SHOW_CATEGORY_TITLE_DESC">
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field name="show_category_heading_title_text" type="list" label="JGLOBAL_SHOW_CATEGORY_HEADING_TITLE_TEXT_LABEL" description="JGLOBAL_SHOW_CATEGORY_HEADING_TITLE_TEXT_DESC">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+		</field>
+
+		<field name="show_description" type="list" label="JGLOBAL_SHOW_CATEGORY_DESCRIPTION_LABEL" description="JGLOBAL_SHOW_CATEGORY_DESCRIPTION_DESC">
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field name="show_description_image" type="list" label="JGLOBAL_SHOW_CATEGORY_IMAGE_LABEL" description="JGLOBAL_SHOW_CATEGORY_IMAGE_DESC">
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field name="maxLevel" type="list" label="JGLOBAL_MAXLEVEL_LABEL" description="JGLOBAL_MAXLEVEL_DESC">
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="-1">JALL</option>
+			<option value="0">JNONE</option>
+			<option value="1">J1</option>
+			<option value="2">J2</option>
+			<option value="3">J3</option>
+			<option value="4">J4</option>
+			<option value="5">J5</option>
+		</field>
+
+		<field name="show_empty_categories" type="list" label="JGLOBAL_SHOW_EMPTY_CATEGORIES_LABEL" description="JGLOBAL_SHOW_EMPTY_CATEGORIES_DESC">
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field name="show_no_results" type="list" label="COM_${1:${TM_PROJECT/(.+)/\U\1/g}}_NO_RESULTS_LABEL" description="COM_${1/(.+)/\U\1/g}_NO_RESULTS_DESC">
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field name="show_subcat_desc" type="list" label="JGLOBAL_SHOW_SUBCATEGORIES_DESCRIPTION_LABEL" description="JGLOBAL_SHOW_SUBCATEGORIES_DESCRIPTION_DESC">
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field name="show_cat_num_items" type="list" label="COM_${1/(.+)/\U\1/g}_NUMBER_CATEGORY_ITEMS_LABEL" description="COM_${1/(.+)/\U\1/g}_NUMBER_CATEGORY_ITEMS_DESC">
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field name="page_subheading" type="text" label="JGLOBAL_SUBHEADING_LABEL" description="JGLOBAL_SUBHEADING_DESC" size="20" />
+	</fieldset>
+]]></content>
+	<tabTrigger>jsiteviewmenuparamscategory</tabTrigger>
+</snippet>

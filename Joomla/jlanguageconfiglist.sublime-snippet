@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[; ${1:${TM_PROJECT/(.+)/\u\1/g}} Config List
+COM_${1/(.+)/\U\1/g}_LIST_SETTINGS_DESC="Essas opções se aplicam aos layouts de listas, exceto se forem alterados por uma configuração de menu ou categoria específica."
+COM_${1/(.+)/\U\1/g}_NUMBER_ITEMS_LIST_LABEL="Número de Itens"
+COM_${1/(.+)/\U\1/g}_NUMBER_ITEMS_LIST_DESC="Número padrão de itens para exibição em uma página."
+COM_${1/(.+)/\U\1/g}_PAGINATION_DESC="Exibir ou ocultar suporte à paginação. A paginação fornece links ao usuário para navagar entre as páginas."
+]]></content>
+	<tabTrigger>jlanguageconfiglist</tabTrigger>
+</snippet>

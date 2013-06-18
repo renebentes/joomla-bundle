@@ -9,7 +9,7 @@
 function getPagination()
 {
 	if(empty(\$this->_pagination)) :
-		require_once (JPATH_COMPONENT . DS . 'helpers' . DS . 'pagination.php');
+		require_once (JPATH_COMPONENT . DS . 'helpers/html/pagination.php');
 		\$limit = (int) \$this->getState('list.limit') - (int) \$this->getState('list.links');
 		\$this->_pagination = new ${2:${TM_PROJECT/(.+)/\u\1/g}}Pagination(\$this->getTotal(), \$this->getStart(), \$limit);
 	endif;
