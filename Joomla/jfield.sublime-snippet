@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[/**
- * Form Field ${1/(.+)/\u\1/g} class.
+ * Form Field ${1:Name} class.
  *
- * @package     $TM_PROJECT
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @package     ${2:${TM_PROJECT/(.+)/\u\1/g}}
+ * @subpackage  com_${2/(.+)/\L\1/g}
+ * @since       ${3:${TM_VERSION}}
  */
-class JFormField${1:Name} extends JFormField
+class JFormField${1/(.+)/\u\1/g} extends JFormField
 {
 	/**
 	 * The field type.
@@ -20,7 +20,7 @@ class JFormField${1:Name} extends JFormField
 	 *
 	 * @return  string  The field input.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	public function getInput()
 	{
@@ -29,7 +29,6 @@ class JFormField${1:Name} extends JFormField
 		return \$return;
 	}
 }
-
 ]]></content>
 	<tabTrigger>jfield</tabTrigger>
 </snippet>

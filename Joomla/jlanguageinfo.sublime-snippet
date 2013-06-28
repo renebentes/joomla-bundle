@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[; ${1:${TM_PROJECT/(.+)/\u\1/g}} Info Details
+COM_${1/(.+)/\U\1/g}_INFO="Detalhes"
+COM_${1/(.+)/\U\1/g}_WRITTEN_BY="Por %s"
+COM_${1/(.+)/\U\1/g}_PARENT="Pai: %s"
+COM_${1/(.+)/\U\1/g}_CATEGORY="Categoria: %s"
+COM_${1/(.+)/\U\1/g}_CREATED_DATE_ON="Criação: %s"
+COM_${1/(.+)/\U\1/g}_PUBLISHED_DATE_ON="Publicação: %s"
+COM_${1/(.+)/\U\1/g}_LAST_UPDATED="Atualização: %s"
+COM_${1/(.+)/\U\1/g}_HITS="Acessos: %s"
+]]></content>
+	<tabTrigger>jlanguageinfo</tabTrigger>
+</snippet>

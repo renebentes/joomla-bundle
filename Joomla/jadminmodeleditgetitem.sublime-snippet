@@ -6,13 +6,13 @@
  *
  * @return  mixed  Object on success, false on failure.
  *
- * @since   2.5
+ * @since   ${1:${TM_VERSION}}
  */
 public function getItem(\$pk = null)
 {
 	if (\$item = parent::getItem(\$pk))
 	{
-		// Convert the params field to an array.
+		// Convert the metadata field to an array.
 		\$registry = new JRegistry;
 		\$registry->loadString(\$item->metadata);
 		\$item->metadata = \$registry->toArray();

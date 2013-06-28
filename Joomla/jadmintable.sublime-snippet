@@ -70,7 +70,7 @@ class ${2/(.+)/\u\1/g}Table${1/(.+)/\u\1/g} extends JTable
 		// Check for valid ${5:title}.
 		if (trim(\$this->${5/(.+)/\L\1/g}) == '')
 		{
-			\$this->setError(JText::_('COM_${2/(.+)/\U\1/g}_WARNING_PROVIDE_VALID_NAME'));
+			\$this->setError(JText::_('COM_${2/(.+)/\U\1/g}_WARNING_PROVIDE_VALID_${5/(.+)/\U\1/g}'));
 
 			return false;
 		}

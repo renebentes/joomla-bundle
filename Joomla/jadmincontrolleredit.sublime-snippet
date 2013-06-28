@@ -4,7 +4,7 @@
 /**
  * ${1:Hello} controller class.
  *
- * @package     ${2:${TM_PROJECT}}
+ * @package     ${2:${TM_PROJECT/(.+)/\u\1/g}}
  * @subpackage  com_${2/(.+)/\L\1/g}
  * @since       ${3:${TM_VERSION}}
  */
