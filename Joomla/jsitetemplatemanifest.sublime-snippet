@@ -1,16 +1,16 @@
 <snippet>
 	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE install PUBLIC "-//Joomla! 1.6//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
-<extension version="$TM_VERSION" type="template" client="site">
-	<name>${TM_TEMPLATE/(.+)/\L\1/g}</name>
-	<creationDate>$1/$TM_YEAR</creationDate>
-	<author>$TM_FULLNAME</author>
-	<authorEmail>$TM_EMAIL</authorEmail>
-	<authorUrl>$TM_WEBSITE</authorUrl>
-	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
+<extension version="$TM_VERSION" type="template" client="site" method="upgrade">
+	<name>${1:${TM_TEMPLATE/(.+)/\L\1/g}}</name>
+	<creationDate>$2</creationDate>
+	<author>${3:${TM_FULLNAME}}</author>
+	<authorEmail>${4:${TM_EMAIL}}</authorEmail>
+	<authorUrl>${5:${TM_WEBSITE}}</authorUrl>
+	<copyright>Copyright (C) ${6:${TM_YEAR}} ${7:${TM_ORGANIZATION_NAME}}. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<version>$TM_MANIFEST_VERSION</version>
-	<description>TPL_${TM_TEMPLATE/(.+)/\U\1/g}_XML_DESCRIPTION</description>
+	<version>${8:${TM_MANIFEST_VERSION}}</version>
+	<description>TPL_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
 	<files>
 		<folder>css</folder>
 		<folder>html</folder>
@@ -28,15 +28,27 @@
 		<filename>templateDetails.xml</filename>
 	</files>
 	<positions>
-		<position>${TM_TEMPLATE/(.+)/\L\1/g}-mainmenu</position>
-		<position>${TM_TEMPLATE/(.+)/\L\1/g}-search</position>
-		<position>${TM_TEMPLATE/(.+)/\L\1/g}-sidebar</position>
-		<position>${TM_TEMPLATE/(.+)/\L\1/g}-footer</position>
-		<position>${TM_TEMPLATE/(.+)/\L\1/g}-footermenu</position>
+		<position>bottom</position>
+		<position>bottom-article</position>
+		<position>copyright</position>
+		<position>debug</position>
+		<position>featured</position>
+		<position>footer</position>
+		<position>footer-menu</position>
+		<position>header</position>
+		<position>left</position>
+		<position>login</position>
+		<position>rigth</position>
+		<position>search</position>
+		<position>sub-menu</position>
+		<position>top</position>
+		<position>top-article</position>
+		<position>top-menu</position>
+		<position>user-menu</position>
 	</positions>
 	<languages folder="language">
-		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.tpl_${TM_TEMPLATE/(.+)/\L\1/g}.ini</language>
-		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.tpl_${TM_TEMPLATE/(.+)/\L\1/g}.sys.ini</language>
+		<language tag="${9:${TM_LANGUAGE}}">$9/$9.tpl_${1/(.+)/\L\1/g}.ini</language>
+		<language tag="$9">$9/$9.tpl_${1/(.+)/\L\1/g}.sys.ini</language>
 	</languages>
 	<config>
 		<fields name="params">
@@ -45,7 +57,6 @@
 		</fields>
 	</config>
 </extension>
-
 ]]></content>
 	<tabTrigger>jsitetemplatemanifest</tabTrigger>
 </snippet>

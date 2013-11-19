@@ -1,36 +1,36 @@
 <snippet>
-	<content><![CDATA[require_once JPATH_SITE . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/helpers/route.php';
+	<content><![CDATA[require_once JPATH_SITE . '/components/com_${1:${TM_PROJECT/(.+)/\L\1/g}}/helpers/route.php';
 
-JModelLegacy::addIncludePath(JPATH_SITE . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/models', '${TM_PROJECT/(.+)/\u\1/g}Model');
+JModelLegacy::addIncludePath(JPATH_SITE . '/components/com_${1/(.+)/\L\1/g}/models', '${1/(.+)/\u\1/g}Model');
 
 /**
- * ${1/(.+)/\u\1/g} module helper.
+ * ${2:Hello} module helper.
  *
- * @package     $TM_PROJECT
- * @subpackage  mod_${1/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @package     ${2/(.+)/\u\1/g}
+ * @subpackage  mod_${2/(.+)/\L\1/g}
+ * @since       ${3:${TM_VERSION}}
  */
-abstract class mod${1:Hello}Helper
+abstract class mod${2/(.+)/\u\1/g}Helper
 {
 	/**
-	 * Get a list of the ${3/(.+)/\L\1/g} items.
+	 * Get a list of the ${4:items}.
 	 *
 	 * @param   JRegistry  &\$params  The module options.
 	 *
 	 * @return  array
 	 *
-	 * @since   $TM_VERSION
+	 * @since   $3
 	 */
 	public static function getList(&\$params)
 	{
 		// Get the dbo
 		\$db = JFactory::getDbo();
 
-		// Get an instance of the generic ${2/(.+)/\L\1/g} model
-		\$model = JModelLegacy::getInstance('${2:Hellos}', '${TM_PROJECT/(.+)/\u\1/g}Model', array('ignore_request' => true));
+		// Get an instance of the generic ${4/(.+)/\L\1/g} model
+		\$model = JModelLegacy::getInstance('${4/(.+)/\u\1/g}', '${1/(.+)/\u\1/g}Model', array('ignore_request' => true));
 
 		// Set application parameters in model
-		\$app = JFactory::getApplication();
+		\$app       = JFactory::getApplication();
 		\$appParams = \$app->getParams();
 		\$model->setState('params', \$appParams);
 
@@ -40,7 +40,7 @@ abstract class mod${1:Hello}Helper
 		\$model->setState('filter.published', 1);
 
 		// Access filter
-		\$access = !JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}')->get('show_noauth');
+		\$access     = !JComponentHelper::getParams('com_${1/(.+)/\L\1/g}')->get('show_noauth');
 		\$authorised = JAccess::getAuthorisedViewLevels(JFactory::getUser()->get('id'));
 		\$model->setState('filter.access', \$access);
 
@@ -107,8 +107,8 @@ abstract class mod${1:Hello}Helper
 
 			if (\$access || in_array(\$item->access, \$authorised))
 			{
-				// We know that user has the privilege to view the ${3/(.+)/\L\1/g}
-				\$item->link = JRoute::_(${TM_PROJECT/(.+)/\u\1/g}HelperRoute::get${3:Hello}Route(\$item->slug, \$item->catslug));
+				// We know that user has the privilege to view the ${5:item}
+				\$item->link = JRoute::_(${1/(.+)/\u\1/g}HelperRoute::get${5/(.+)/\u\1/g}Route(\$item->slug, \$item->catslug));
 			}
 			else
 			{
@@ -119,7 +119,6 @@ abstract class mod${1:Hello}Helper
 		return \$items;
 	}
 }
-
 ]]></content>
 	<tabTrigger>jsitemodulehelperadvanced</tabTrigger>
 </snippet>
